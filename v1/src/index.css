@@ -17,7 +17,7 @@ body {
   min-height: 300px;
   border: 1px solid steelblue;
   padding: 30px;
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
 .header {
@@ -53,6 +53,8 @@ body {
   display: block;
   width: 100%;
 }
+
+
 
 .task {
   background: #f4f4f4;
