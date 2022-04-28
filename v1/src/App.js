@@ -47,16 +47,20 @@ function App() {
     )
   }
   return (
-    <div 
+    <div
       className='container'
-      style={{backgroundColor: '#87C267'}}
-      >
+    >
+      <div className='container-tasks'>
         <Header onAdd = {() => setShowAddTask (!showAddTask)}
         showAdd = {showAddTask}
         />
         {showAddTask && <AddTask onAdd={addTask}/>}
         {tasks.length > 0 ? <Tasks tasks={tasks} 
         onDelete = {deleteTask} onToggle={toggleReminder}/>: 'No Tasks to show' }
+      </div>  
+
+
+
     </div>
   );
 }
