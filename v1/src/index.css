@@ -2,16 +2,21 @@
 
  * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+  background-color: #00CC99;
+  
 } 
 
 body {
   font-family: 'Poppins', sans-serif;
 }
 
-.container {
-  background-color: #00CC99;
+.container-header {
+  display: flex;
+  background-color: rgba(255, 255, 255, 0.40);
+  height: 75px;
+  text-align: left;
+  align-items: center;
+  padding: 40px;
 }
 .container-tasks {
   width: 400px;
@@ -20,7 +25,7 @@ body {
   padding: 30px;
   border-radius: 10px;
   
-  background-color: rgba(0, 204, 153, 0.5);
+  background-color: rgba(0, 204, 153, 0.1);
 }
 
 .background-green{
@@ -64,10 +69,8 @@ body {
   width: 100%;
 }
 
-
-
 .task {
-  background-color: rgba(255, 255, 255, 0.25);
+  background-color: rgba(255, 255, 255, 0.18);
   margin: 5px;
   padding: 10px 20px;
   cursor: pointer;

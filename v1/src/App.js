@@ -3,6 +3,7 @@ import {useState} from 'react'
 import Header from './Components/Header'
 import Tasks from './Components/Tasks'
 import AddTask from './Components/AddTask'
+import MainHeader from './Components/MainHeader'
 
 
 function App() {
@@ -47,9 +48,10 @@ function App() {
     )
   }
   return (
-    <div
-      className='container'
-    >
+    <div>
+      <h1>
+        <MainHeader />
+      </h1>
       <div className='container-tasks'>
         <Header onAdd = {() => setShowAddTask (!showAddTask)}
         showAdd = {showAddTask}
