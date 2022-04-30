@@ -4,12 +4,15 @@ import Button from './Button'
 const MainHeader = ({logo, about, signOut}) => {
     
   return (
-    <div className='container-header'>
-            <h1 style={{backgroundColor: '#ffffff0'}}>
-              {logo}
-              {signOut} 
-              {about} 
+    <div>
+      <header className='container-header'>
+        <h1 style={{backgroundColor: '#ffffff1'}}>
+              Ambience
+              {/* {signOut} 
+              {about}  */}
             </h1>
+      </header>
+            
     </div>
   )
 }
