@@ -13,7 +13,6 @@ body {
 
 .container-header {
   display: flex;
-  align-items: center;
   background-color: rgba(255, 255, 255, 0.18);
   height: 75px;
   padding: 40px;
@@ -35,11 +34,24 @@ body {
   background-color: #00CC99;
 } */
 
+.label{
+  font-size: 17px;
+  display: inline;
+  cursor: pointer;
+  margin: 15px;
+  font-family:inherit;
+}
+
+.label-pomodoro{
+  margin-right: 20%;
+}
+
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
+  font-family: inherit;
 }
 
 .btn {
@@ -121,7 +133,16 @@ body {
   height: 20px;
 }
 
-footer {
+/* footer {
   margin-top: 30px;
   text-align: center;
+} */
+
+.container-allAudio{
+  width: 400px;
+  margin: 20px;
+  height: 300px auto;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }

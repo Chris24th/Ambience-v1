@@ -1,16 +1,20 @@
 import PropTypes from 'prop-types'
-import Button from './Button'
+import AboutUs from './AboutUs'
+import SignOut from './SignOut'
+import Pomodoro from './Pomodoro'
 
-const MainHeader = ({logo, about, signOut}) => {
+const MainHeader = ({logo, onAbout, signOut}) => {
     
   return (
     <div>
-      <header className='container-header'>
-        <h1 style={{backgroundColor: '#ffffff1'}}>
-              Ambience
-              {/* {signOut} 
-              {about}  */}
-            </h1>
+      <header className='header container-header'>
+        <h1 style={{backgroundColor: '#ffffff1'}}>Logo</h1>
+              <Pomodoro />
+              <AboutUs 
+                onClick={onAbout}/>
+              <SignOut 
+                onClick={signOut}/>
+            
       </header>
             
     </div>
@@ -20,17 +24,9 @@ const MainHeader = ({logo, about, signOut}) => {
 MainHeader.defaultProps = {
   logo: 'Ambience',
 }
-MainHeader.defaultProps = {
-  about: 'About Us',
-}
-MainHeader.defaultProps = {
-  signOut: 'Sign Out',
-}
 
 MainHeader.propTypes = {
     logo: PropTypes.string,
-    about: PropTypes.string,
-    signOut: PropTypes.string,
 }
 
 export default MainHeader
