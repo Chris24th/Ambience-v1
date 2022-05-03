@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 const Pomodoro = ({text}) => {
   return (
     <label
-        className='label label-pomodoro' 
+        className='container-pomodoro' 
     >
         {text}  
     </label>
