@@ -14,7 +14,7 @@ body {
 .container-header {
   display: flex;
   background-color: rgba(255, 255, 255, 0.18);
-  height: 75px;
+  height: 100px;
   padding: 40px;
   box-shadow: 0 0 0 rgba(0,0,0,0.17), 0 1px 2px rgba(0,0,0,0.24);
 }
@@ -44,6 +44,14 @@ body {
   border-radius: 10px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
+
+.audio-font{
+  display: block;
+  font-size: large;
+  padding: 5px;
+  
+}
+
 .arrange{
   display: inline-block;
 }

@@ -1,27 +1,21 @@
 import PropTypes from 'prop-types'
 import AboutUs from './AboutUs'
 import SignOut from './SignOut'
-import Logo from '../src/Images/logo.png'
+import MainLogo from './logo.png'
 
 const MainHeader = ({signOut}) => {
     
   return (
-    <img src={Logo} />
-    // <div>
-    //   <header className='header container-header'>
-    //     Menu
-    //     <h1 style={{backgroundColor: '#ffffff1'}}>
-    //       {/* <img src={Logo} className='logo' alt="" /> */}
-    //       {/* <img src={logo} height={100} width={100} /> */}
-    //       {/* <img src={Logo} /> */}
-    //     </h1>
-        
-    //           <SignOut 
-    //             onClick={signOut}/>
+    
+    <div>
+      <header className='header container-header'>
+        Menu
+        <img src={MainLogo} height={150} width={150} alt='error'/>
+        <SignOut 
+          onClick={signOut}/>
+      </header>
             
-    //   </header>
-            
-    // </div>
+    </div>
   )
 }
 
