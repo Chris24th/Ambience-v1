@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types'
-import Button from '@mui/material/Button'
 
 const Pomodoro = ({work, breakTime, timer,start}) => {
   return (
