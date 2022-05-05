@@ -4,8 +4,8 @@ import Header from './Components/Header'
 import Tasks from './Components/Tasks'
 import AddTask from './Components/AddTask'
 import MainHeader from './Components/MainHeader'
-import AllAudio from './Components/AllAudio'
 import Pomodoro from './Components/Pomodoro'
+import AllAudio from './Components/AllAudio'
 
 
 function App() {
@@ -54,10 +54,15 @@ function App() {
       <div>
         <MainHeader />
       </div>
-      <div>
-        <Pomodoro
-        />
+      <div className = 'arrange'>
+        <div className='container-pomodoro'>
+          <Pomodoro />
+        </div>
+        <div  className='container-allAudio'>
+          <AllAudio />
+        </div>
       </div>
+      
       <div className='container-tasks'>
         <Header 
           onAdd = {() => setShowAddTask (!showAddTask)}

@@ -1,21 +1,41 @@
 import PropTypes from 'prop-types'
+import Button from '@mui/material/Button'
 
-const Pomodoro = ({text}) => {
+const Pomodoro = ({work, breakTime, timer,start}) => {
   return (
-    <label
-        className='container-pomodoro' 
-    >
-        {text}  
-    </label>
+    <div>
+        <header>
+          <label className='header-pomodoro'>
+            <div className='work-break'>
+              {work}
+            </div>
+            <div className='work-break'>
+              {breakTime}
+            </div>
+          </label>
+          <label className='timer'>
+            {timer} 
+          </label>
+          <button className='startBtn'>
+            {start}
+          </button>
+        </header>
+    </div>
   )
 }
 
 Pomodoro.defaultProps = {
-    text: '55:00',
+  work: 'Work',
+  breakTime: 'Break',
+  timer: '55:00',
+  start: 'Start'
 }
 
 Pomodoro.propTypes = {
-    text: PropTypes.string,
+  work: PropTypes.string,
+  break: PropTypes.string,
+  timer: PropTypes.string,
+  start: PropTypes.string,
 }
 
 export default Pomodoro

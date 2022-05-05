@@ -1,17 +1,14 @@
 import PropTypes from 'prop-types'
 import AboutUs from './AboutUs'
 import SignOut from './SignOut'
-import Pomodoro from './Pomodoro'
 
-const MainHeader = ({logo, onAbout, signOut}) => {
+const MainHeader = ({logo, signOut}) => {
     
   return (
     <div>
       <header className='header container-header'>
+        Menu
         <h1 style={{backgroundColor: '#ffffff1'}}>Logo</h1>
-              <Pomodoro />
-              <AboutUs 
-                onClick={onAbout}/>
               <SignOut 
                 onClick={signOut}/>
             
