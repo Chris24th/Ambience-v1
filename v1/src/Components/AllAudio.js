@@ -1,27 +1,45 @@
 import PropTypes from 'prop-types'
+import {RangeStepInput} from 'react-range-step-input'
 import {AiOutlinePlayCircle} from 'react-icons/ai'
+import {HiOutlineVolumeUp} from 'react-icons/hi'
+import {BiRadio} from 'react-icons/bi'
+import {BsCloudRain} from 'react-icons/bs'
+import {GiTreeBranch} from 'react-icons/gi'
+import {GiCampfire} from 'react-icons/gi'
 
 const AllAudio = ({lofi, rain, forest, fireplace}) => {
   return (
     <div>
       <div className = 'audio-font'>
-          {lofi}  <AiOutlinePlayCircle size='20px'/><br /><br /><br />
+          {lofi}  <AiOutlinePlayCircle className='icon-play'/>
+          <div className='icon-align'>
+            < BiRadio className='icon-gen'/>   <RangeStepInput  />
+          </div>
       </div>
-      <div>
-          {rain}  <AiOutlinePlayCircle size='20px'/><br /><br /><br />
+      <div className = 'audio-font'>
+          {rain}  <AiOutlinePlayCircle className='icon-play'/><br /> 
+          <div className='icon-align'>
+            < BsCloudRain className='icon-gen'/>   <RangeStepInput  />
+          </div>
       </div>
-      <div>
-          {forest}  <AiOutlinePlayCircle size='20px'/><br /><br /><br />
+      <div className = 'audio-font'>
+          {forest}  <AiOutlinePlayCircle className='icon-play'/><br />
+          <div className='icon-align'>
+            < GiTreeBranch className='icon-gen'/>   <RangeStepInput  />
+          </div>
       </div>
-      <div>
-          {fireplace}  <AiOutlinePlayCircle size='20px'/>
+      <div className = 'audio-font'>
+          {fireplace}  <AiOutlinePlayCircle className='icon-play'/>
+          <div className='icon-align'>
+            < GiCampfire className='icon-gen'/>   <RangeStepInput  />
+          </div>
       </div>
     </div>
   )
 }
 
 AllAudio.defaultProps = {
-    lofi: 'Work',
+    lofi: 'Lofi Radio',
     rain: 'Rain',
     forest: 'Forest',
     fireplace: 'Fireplace',

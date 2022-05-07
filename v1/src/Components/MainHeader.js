@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import AboutUs from './AboutUs'
 import SignOut from './SignOut'
 import MainLogo from './logo.png'
+import {AiOutlineMenu} from 'react-icons/ai'
 
 const MainHeader = ({signOut}) => {
     
@@ -9,10 +10,10 @@ const MainHeader = ({signOut}) => {
     
     <div>
       <header className='header container-header'>
-        Menu
-        <img src={MainLogo} height={150} width={150} alt='error'/>
+       <AiOutlineMenu className='icon-menu'/>
+        <img src={MainLogo} className='mainLogo' alt='error'/>
         <SignOut 
-          onClick={signOut}/>
+          onClick={signOut} />
       </header>
             
     </div>

@@ -1,12 +1,13 @@
 import PropTypes from 'prop-types'
+import {MdWorkOutline} from 'react-icons/md'
 
 const Pomodoro = ({work, breakTime, timer,start}) => {
   return (
-    <div>
+    <div >
         <header>
           <label className='header-pomodoro'>
             <div className='work-break'>
-              {work}
+              <MdWorkOutline className='icon-gen'/>  {work}
             </div>
             <div className='work-break'>
               {breakTime}

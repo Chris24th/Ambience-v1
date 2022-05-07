@@ -10,6 +10,7 @@
     "react-dom": "^18.0.0",
     "react-icons": "^4.3.1",
     "react-scripts": "5.0.1",
+    "react-sliders": "^0.8.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

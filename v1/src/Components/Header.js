@@ -1,14 +1,15 @@
 import PropTypes from 'prop-types'
 import Button from './Button'
+import {BiNotepad} from 'react-icons/bi'
 
 const Header = ({title, onAdd, showAdd}) => {
     
   return (
     <div>
         <header className='header'>
-            <h1>{title}</h1>
+            <h1><BiNotepad className='icon-task'/> {title}</h1>
             <Button 
-                color={showAdd ? 'red' : 'green'} 
+                color={showAdd ? '#624B4B' : '#624B4B'} 
                 text={showAdd ? 'Close' : 'Add'}
                 onClick = {onAdd}
             />
@@ -18,7 +19,7 @@ const Header = ({title, onAdd, showAdd}) => {
 }
 
 Header.defaultProps = {
-    title: 'Tasks',
+    title: 'To Do List',
 }
 
 Header.propTypes = {
