@@ -3,8 +3,7 @@ import { FaTimes } from 'react-icons/fa'
 const Task = ({ task, onDelete, onToggle }) => {
   return (
     
-    <div className = {`task ${task.reminder ? 'reminder' : ''}`}
-        onDoubleClick = {() => onToggle(task.id)} 
+    <div className = 'task'
     >
       <input type='checkbox' className='check-task'/>
       <div className='task-info'>

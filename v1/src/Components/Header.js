@@ -9,7 +9,6 @@ const Header = ({title, onAdd, showAdd}) => {
         <header className='header'>
             <h1><BiNotepad className='icon-task'/> {title}</h1>
             <Button 
-                color={showAdd ? '#624B4B' : '#624B4B'} 
                 text={showAdd ? 'Close' : 'Add'}
                 onClick = {onAdd}
             />
