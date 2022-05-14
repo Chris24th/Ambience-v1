@@ -5,7 +5,6 @@ import MainLogo from './mlogo.svg'
 import {AiOutlineMenu} from 'react-icons/ai'
 
 const MainHeader = ({onMenu,signOut}) => {
-  const [showMenu, setShowMenu] = false;
 
     
   return (
