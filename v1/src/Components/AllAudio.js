@@ -13,25 +13,25 @@ const AllAudio = ({lofi, rain, forest, fireplace}) => {
       <div className = 'audio-font'>
           {lofi}  <AiOutlinePlayCircle className='icon-play'/>
           <div className='icon-align'>
-            < BiRadio className='icon-gen'/>   <RangeStepInput  min='0' max='100'/>
+            < BiRadio className='icon-gen'/><RangeStepInput  min='0' max='100'/>
           </div>
       </div>
       <div className = 'audio-font'>
           {rain}  <AiOutlinePlayCircle className='icon-play'/><br /> 
           <div className='icon-align'>
-            < BsCloudRain className='icon-gen'/>   <RangeStepInput min='0'  max='100' />
+            < BsCloudRain className='icon-gen'/><RangeStepInput min='0'  max='100' />
           </div>
       </div>
       <div className = 'audio-font'>
           {forest}  <AiOutlinePlayCircle className='icon-play'/><br />
           <div className='icon-align'>
-            < GiTreeBranch className='icon-gen'/>   <RangeStepInput min='0'  max='100' />
+            < GiTreeBranch className='icon-gen'/><RangeStepInput min='0'  max='100' />
           </div>
       </div>
       <div className = 'audio-font'>
           {fireplace}  <AiOutlinePlayCircle className='icon-play'/>
           <div className='icon-align'>
-            < GiCampfire className='icon-gen'/>   <RangeStepInput min='0'  max='100' />
+            < GiCampfire className='icon-gen'/><RangeStepInput min='0'  max='100' />
           </div>
       </div>
     </div>

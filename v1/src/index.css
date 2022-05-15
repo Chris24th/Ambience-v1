@@ -24,7 +24,8 @@ body {
   width: 90%;
   margin: 20px;
   height: auto;
-  padding: 20px;
+  padding-bottom: 20px;
+  padding-top: 10px;
   border-radius: 10px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
@@ -57,6 +58,33 @@ body {
   margin-top: 11px;
   margin-bottom: 11px;
 }
+.menu-header{
+  background-color: #D0CABB;
+}
+.ddMenu{
+  display: flex;
+  flex-direction: column;
+  border: none;
+  margin-top: 25%;
+  width: 150%;
+  font: inherit;
+  font-size: medium;
+  border: solid 1px #624B4B;
+  opacity: 0.9;
+}
+.menu-btns{
+  border: none;
+  padding: 15px;
+  font: inherit;
+  cursor: pointer;
+  background-color: #806B6B;
+  color: #fff;
+}
+.menu-btns:hover{
+  background-color: #624B4B;
+  transition: 0.5s;
+}
+
 .mainLogo {
   height: 100px;
   width: 150px;
@@ -65,11 +93,11 @@ body {
 }
 .icon-menu{
   display: inline-block;
-  cursor: pointer;
   vertical-align: middle;
   width: 30px;
   height: 30px;
-  background-color: inherit;
+  /* background-color: inherit; */
+  /* color: inherit; */
 }
 .icon-play{
   display: inline-block;
@@ -142,6 +170,11 @@ body {
   text-align: center;
   font-size: 25px;
   cursor: pointer;
+}
+.work-break:hover {
+  background-color: #806B6B;
+  color: #fff;
+  transition: 0.5s;
 }
 .timer {
   display: block;
@@ -220,8 +253,8 @@ body {
   padding: 10px 20px;
 }
 .check-task{
-  /* filter: hue-rotate(18deg) brightness(1.7); */
   display: inline-block;
+  background-color: #806B6B;
   width: 30px;
   height: 30px;
   vertical-align: middle;
@@ -233,6 +266,7 @@ body {
 .check-task:checked{
   accent-color: #624B4B;
 }
+
 .task.reminder {
   display: block;
   width: 100%;

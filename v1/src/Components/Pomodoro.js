@@ -7,7 +7,7 @@ const Pomodoro = ({work, breakTime, timer,start}) => {
         <header>
           <label className='header-pomodoro'>
             <div className='work-break'>
-              <MdWorkOutline className='icon-gen'/>  {work}
+              {work}
             </div>
             <div className='work-break'>
               {breakTime}

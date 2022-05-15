@@ -6,6 +6,8 @@ import AddTask from './Components/AddTask'
 import MainHeader from './Components/MainHeader'
 import Pomodoro from './Components/Pomodoro'
 import AllAudio from './Components/AllAudio'
+import Dropdown from 'react-bootstrap/Dropdown'
+import DropdownButton from 'react-bootstrap/DropdownButton'
 
 
 
@@ -42,6 +44,7 @@ function App() {
   return (
     <div >
       <div>
+        <Menu />
         <MainHeader />
       </div>
       <div className = 'arrange'>
@@ -65,5 +68,4 @@ function App() {
     </div>
   );
 }
-
 export default App;

@@ -3,8 +3,7 @@ import { FaTimes } from 'react-icons/fa'
 const Task = ({ task, onDelete, onToggle }) => {
   return (
     
-    <div className = 'task'
-    >
+    <div className = 'task'>
       <input type='checkbox' className='check-task'/>
       <div className='task-info'>
           <h3>
