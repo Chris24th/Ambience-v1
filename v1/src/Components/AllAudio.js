@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import {RangeStepInput} from 'react-range-step-input'
 import {AiOutlinePlayCircle} from 'react-icons/ai'
-import {HiOutlineVolumeUp} from 'react-icons/hi'
+// import {HiOutlineVolumeUp} from 'react-icons/hi'
 import {BiRadio} from 'react-icons/bi'
 import {BsCloudRain} from 'react-icons/bs'
 import {GiTreeBranch} from 'react-icons/gi'

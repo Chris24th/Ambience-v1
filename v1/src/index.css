@@ -50,6 +50,18 @@ body {
   vertical-align: top;
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
+.container-login{
+  display: flex;
+  flex-direction: column;
+  height: 90%;
+  width: 500px;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  margin-top: 5%;
+  padding-top: 20px;
+  border: groove #806B6B 2px;
+}
 
 .audio-font{
   display: block;
@@ -86,8 +98,8 @@ body {
 }
 
 .mainLogo {
-  height: 100px;
-  width: 150px;
+  height: 90px;
+  width: 140px;
   /* background-color: rgba(217, 213, 201); */
   object-fit: cover;
 }

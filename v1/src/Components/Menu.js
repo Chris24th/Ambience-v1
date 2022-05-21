@@ -1,10 +1,7 @@
 
 import Dropdown from 'react-bootstrap/Dropdown'
-import DropdownButton from 'react-bootstrap/DropdownButton'
-import React, {useState} from 'react'
 
 const Menu = ({onMenu}) => {
-    const [menu, setMenu]=useState(false)
 
   return (
     <div className='ddMenu'>

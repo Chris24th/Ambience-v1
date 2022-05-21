@@ -10,8 +10,8 @@ const Task = ({ task, onDelete, onToggle }) => {
               {task.text}  
           </h3>
           <FaTimes className='x-btn'
-                    onClick = {() => onDelete(task.id)}
-                />
+            onClick = {() => onDelete(task.id)}
+          />
       </div>
       <p>{task.day}</p>
     </div>
