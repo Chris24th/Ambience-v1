@@ -60,7 +60,7 @@ body {
   align-items: center;
   justify-content: center;
   margin: auto;
-  margin-top: 5%;
+  margin-top: 10%;
   padding-top: 20px;
   border: groove #806B6B 2px;
 }
@@ -99,7 +99,19 @@ body {
   margin-top: 20px;
   font-size: 20px;
 }
-
+.container-contact{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: 80%;
+  margin-top: 100px;
+}
+.container-about p{
+  margin-top: 20px;
+  font-size: 20px;
+}
 .audio-font{
   display: block;
   font-size: 20px;

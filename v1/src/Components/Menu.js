@@ -17,10 +17,28 @@ const Menu = ({ onMenu }) => {
         </Link>
       </Dropdown.Item>
       <Dropdown.Item as="button" className="menu-btns">
-        Contact Us
+        <Link
+          to="/contact"
+          style={{
+            textDecoration: "none",
+            backgroundColor: "inherit",
+            color: "inherit",
+          }}
+        >
+          Contact Us
+        </Link>
       </Dropdown.Item>
       <Dropdown.Item as="button" className="menu-btns">
-        Help
+        <Link
+          to="/help"
+          style={{
+            textDecoration: "none",
+            backgroundColor: "inherit",
+            color: "inherit",
+          }}
+        >
+          Help
+        </Link>
       </Dropdown.Item>
     </div>
   );
