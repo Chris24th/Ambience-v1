@@ -1,23 +1,22 @@
-import PropTypes from 'prop-types'
+import React from "react";
+import MainHeader from "./MainHeader";
+import MainLogo from "./mlogo.svg";
+import { Link } from "react-router-dom";
 
-const AboutUs = ({text, onClick}) => {
+function AboutUs() {
   return (
-    <label
-        onClick={onClick}
-        className='label'
-    >
-      {text}
-    </label>
-  )
+    <div>
+      <header className="header-login">
+        <Link to="/">
+          <img src={MainLogo} className="mainLogo" alt="error" />
+        </Link>
+      </header>
+      <div className="container-about">
+        <h1>About Us</h1>
+        <p>Ambience is a website for studying pace. blahblah</p>
+      </div>
+    </div>
+  );
 }
 
-AboutUs.defaultProps = {
-    text: 'About Us',
-}
-
-AboutUs.propTypes = {
-    text: PropTypes.string,
-    onClick: PropTypes.func,
-}
-
-export default AboutUs
+export default AboutUs;

@@ -5,7 +5,7 @@ import Menu from "./Menu";
 import { AiOutlineMenu } from "react-icons/ai";
 import { useState } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
-// import DropdownButton from 'react-bootstrap/DropdownButton'
+// import DropdownButton from "react-bootstrap/DropdownButton";
 import { Link } from "react-router-dom";
 
 const MainHeader = ({ signOut }) => {
@@ -27,7 +27,7 @@ const MainHeader = ({ signOut }) => {
         <Link to="/">
           <img src={MainLogo} className="mainLogo" alt="error" />
         </Link>
-        <Link to="/login">
+        <Link to="/login" style={{ textDecoration: "none" }}>
           <SignOut onClick={signOut} />
         </Link>
       </header>

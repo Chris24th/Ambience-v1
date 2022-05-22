@@ -1,7 +1,8 @@
 import React from "react";
 import Login from "./Login";
 import Main from "./Main";
-import MainHeader from "./Components/MainHeader";
+import AboutUs from "./Components/AboutUs";
+import Footer from "./Components/Footer";
 import {
   BrowserRouter as Router,
   Routes,
@@ -12,13 +13,12 @@ import {
 function App() {
   return (
     <Router>
-      <div>
-        <MainHeader />
-      </div>
       <Routes>
-        <Route path="/" element={<Main />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/" element={<Main />} />
+        <Route path="/about" element={<AboutUs />} />
       </Routes>
+      <Footer />
     </Router>
   );
 }

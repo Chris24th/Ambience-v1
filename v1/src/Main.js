@@ -44,6 +44,7 @@ function Main() {
   };
   return (
     <div>
+      <MainHeader />
       <div className="arrange">
         <div className="container-pomodoro">
           <Pomodoro />

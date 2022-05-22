@@ -1,4 +1,7 @@
 import React from "react";
+import MainHeader from "./Components/MainHeader";
+import MainLogo from "./Components/mlogo.svg";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 
 function Login() {
@@ -16,29 +19,36 @@ function Login() {
     setPass("");
   };
   return (
-    <div className="container-login">
-      <h1>Login</h1>
-      <form className="add-form" onSubmit={onSubmit}>
-        <div className="form-control">
-          <label>Email</label>
-          <input
-            className="input-style"
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
-        <div className="form-control">
-          <label>Password</label>
-          <input
-            className="input-style"
-            type="text"
-            value={password}
-            onChange={(e) => setPass(e.target.value)}
-          />
-        </div>
-        <input type="submit" value="Login" className="btn btn-block" />
-      </form>
+    <div>
+      <header className="header-login">
+        <img src={MainLogo} className="mainLogo" alt="error" />
+      </header>
+      <div className="container-login">
+        <h1>Login</h1>
+        <form className="add-form" onSubmit={onSubmit}>
+          <div className="form-control">
+            <label>Email</label>
+            <input
+              className="input-style"
+              type="text"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <div className="form-control">
+            <label>Password</label>
+            <input
+              className="input-style"
+              type="text"
+              value={password}
+              onChange={(e) => setPass(e.target.value)}
+            />
+          </div>
+          <Link to="/">
+            <input type="submit" value="Login" className="btn btn-block" />
+          </Link>
+        </form>
+      </div>
     </div>
   );
 }
