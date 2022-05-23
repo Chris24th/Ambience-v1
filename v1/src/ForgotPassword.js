@@ -4,9 +4,11 @@ import MainLogo from "./Components/mlogo.svg";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-function Login() {
+function ForgotPassword() {
   const [email, setEmail] = useState("");
   const [password, setPass] = useState("");
+  const [newPass, setNewPass] = useState("");
+  const [confirmPassword, setConfirmPass] = useState("");
   const onSubmit = (e) => {
     e.preventDefault();
 
@@ -20,19 +22,7 @@ function Login() {
   };
   return (
     <div className="login-container">
-      <div>
-        <img
-          src={MainLogo}
-          className="mainLogo"
-          style={{
-            size: "300px",
-            width: "554px",
-            height: "526px",
-          }}
-          alt="error"
-        />
-      </div>
-      <div className="login-box">
+      <div className="register-box">
         <form className="add-form" onSubmit={onSubmit}>
           <div className="form-control">
             <label>Email</label>
@@ -52,29 +42,50 @@ function Login() {
               onChange={(e) => setPass(e.target.value)}
             />
           </div>
-          <Link to="/" style={{ textDecoration: "none" }}>
+          <div className="form-control">
+            <label>New Password</label>
+            <input
+              className="input-style"
+              type="text"
+              value={newPass}
+              onChange={(e) => setNewPass(e.target.value)}
+            />
+          </div>
+          <div className="form-control">
+            <label>Confirm Password</label>
+            <input
+              className="input-style"
+              type="text"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPass(e.target.value)}
+            />
+          </div>
+          <Link to="/login" style={{ textDecoration: "none" }}>
             <input
               type="submit"
-              value="LOGIN"
+              value="Change Password"
               className="btn btn-block-login"
             />
           </Link>
         </form>
-        <div className="login-under">
-          <div>
-            <Link to="/register" style={{ textDecoration: "none" }}>
-              Register
-            </Link>
-          </div>
-          <div>
-            <Link to="/forgot-password" style={{ textDecoration: "none" }}>
-              Forgot Password?
-            </Link>
-          </div>
-        </div>
+        <Link to="/login" style={{ textDecoration: "none" }}>
+          Login
+        </Link>
+      </div>
+      <div>
+        <img
+          src={MainLogo}
+          className="mainLogo"
+          style={{
+            size: "300px",
+            width: "554px",
+            height: "526px",
+          }}
+          alt="error"
+        />
       </div>
     </div>
   );
 }
 
-export default Login;
+export default ForgotPassword;

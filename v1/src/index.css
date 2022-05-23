@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Exa:wght@100;300;500&display=swap');
  * {
   box-sizing: border-box;
   background-color: #D0CABB;
@@ -9,7 +8,7 @@
 } 
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Lexend Exa', sans-serif;
 }
 
 .container-header {
@@ -52,17 +51,27 @@ body {
   vertical-align: top;
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
-.container-login{
+.login-container{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 70px;
+}
+.login-box{
   display: flex;
   flex-direction: column;
   height: 90%;
-  width: 500px;
-  align-items: center;
-  justify-content: center;
-  margin: auto;
-  margin-top: 10%;
-  padding-top: 20px;
-  border: groove #806B6B 2px;
+  width: 600px;
+  margin-top: 100px;
+  margin-right: 50px;
+  margin-bottom: 100px;
+  padding-left: 150px;
+  border-left: solid 2px #806B6B;
+}
+.login-under{
+  display: flex;
+  justify-content: space-between;
 }
 .header-login{
   display: flex;
@@ -70,6 +79,16 @@ body {
   align-items: center;
   width: 100%;
   box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.25);
+}
+.register-box{
+  display: flex;
+  flex-direction: column;
+  height: 90%;
+  width: 600px;
+  margin-left: 50px;
+  margin-top: 40px;
+  padding-right: 150px;
+  border-right: solid 2px #806B6B;
 }
 .container-footer{
   display: flex;
@@ -88,16 +107,25 @@ body {
 }
 .container-about{
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-  width: 100%;
+  margin: auto;
+  padding: 40px;
+  width: 70%;
   height: 80%;
   margin-top: 100px;
+  background-color: rgb(168,155,147);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+  border-radius: 40px;
+}
+.container-about h1{
+  background-color: inherit;
+  font-size: 45px;
 }
 .container-about p{
-  margin-top: 20px;
-  font-size: 20px;
+  color:#fff;
+  background-color: inherit;
 }
 .container-contact{
   display: flex;
@@ -111,6 +139,41 @@ body {
 .container-about p{
   margin-top: 20px;
   font-size: 20px;
+}
+.container-team{
+  width: 70%;
+  height: 100px auto;
+  background: #E5E5E5;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+  border-radius: 40px;
+  display: flex;
+  align-items: center;
+  margin: auto;
+  flex-wrap: wrap;
+}
+.container-team p{
+  margin: 20px;
+  border: none;
+  border-radius: 40px;
+  display: flex;
+  background-color: inherit;
+  justify-content: center;
+  align-items: center;
+}
+.chris{
+  border: none;
+  border-radius: 40px;
+  width: 50%;
+  height: 100px;
+  background-color: inherit;
+}
+.kent{
+  border: none;
+  border-radius: 40px;
+  width: 50%;
+  height: 100px;
+  background-color: inherit;
+
 }
 .audio-font{
   display: block;
@@ -293,11 +356,17 @@ body {
   width: 100%;
   height: 40px;
 }
-
+.btn-block-login {
+  margin-top: 50px;
+  display: block;
+  width: 100%;
+  height: 90px;
+  font-size: 30px;
+}
 .input-style {
   box-sizing: border-box;
   border: none;
-  transition: 0.1s;
+  transition: 0.3s;
   outline: none;
   border-bottom: 1px solid #806B6B;
 }
@@ -367,6 +436,7 @@ body {
 
 .add-form {
   margin-bottom: 40px;
+  width: 100%;
 }
 
 .form-control {

@@ -12,8 +12,28 @@ function AboutUs() {
         </Link>
       </header>
       <div className="container-about">
-        <h1>About Us</h1>
-        <p>Ambience is a website for studying pace. blahblah</p>
+        <h1>ABOUT US</h1>
+        <p style={{ fontSize: "20px" }}>
+          Ambience is a website for studying pace. blahblah
+        </p>
+      </div>
+      <br />
+      <br />
+      <div className="container-team">
+        <div className="chris">
+          <p>
+            Christopher M. Espenida
+            <br />
+            Email: christopher.espenida@cit.edu
+          </p>
+        </div>
+        <div className="kent">
+          <p>
+            Kent Astilla
+            <br />
+            Email: kent.astilla@cit.edu
+          </p>
+        </div>
       </div>
     </div>
   );
