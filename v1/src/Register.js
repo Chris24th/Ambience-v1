@@ -1,27 +1,24 @@
-import React from "react";
-import MainHeader from "./Components/MainHeader";
 import MainLogo from "./Components/mlogo.svg";
-import { Link } from "react-router-dom";
-import { useRef, useState, useEffect } from "react";
+import Login from "./Login";
+import { Link, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 import { db } from "./firebase";
 import { collection, getDocs, addDoc } from "firebase/firestore";
 
-function Register() {
+function Register({ Login }) {
   const [newEmail, setNewEmail] = useState("");
   const [newPassword, setNewPassword] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPass] = useState("");
-  const [confirmPassword, setConfirm] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [users, setUsers] = useState([]);
   const usersCollectionRef = collection(db, "users");
-  const isEmpty = useState(true);
+  const navigate = useNavigate();
 
-  const createUser = async () => {
-    await addDoc(usersCollectionRef, {
-      Email: newEmail,
-      Password: newPassword,
-    });
-  };
+  // const createUser = async () => {
+  //   await addDoc(usersCollectionRef, {
+  //     Email: newEmail,
+  //     Password: newPassword,
+  //   });
+  // };
 
   useEffect(() => {
     const getUsers = async () => {
@@ -32,31 +29,29 @@ function Register() {
     getUsers();
   }, []);
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-
-    if (!email || !password) {
+    if (!newEmail || !newPassword || !confirmPassword) {
       alert("Please Fillout");
       return;
+    } else {
+      if (newPassword === confirmPassword) {
+        await addDoc(usersCollectionRef, {
+          Email: newEmail,
+          Password: newPassword,
+        });
+        alert("You created an Account! Please Log in");
+        navigate("/login");
+        return;
+      } else {
+        alert("Passwords do not match!");
+        return;
+      }
     }
-    // onAdd({ text, day, reminder })
-    setEmail("");
-    setPass("");
   };
 
   return (
     <div className="login-container">
-      {users.map((user) => {
-        return (
-          <div style={{ display: "block" }}>
-            {" "}
-            <h3>Email: {user.Email}</h3>
-            <h3>Password: {user.Password}</h3>
-            <h3 style={{ display: "block" }}>Tasks: {user.Tasks}</h3>
-            <h3 style={{ display: "block" }}>Time: {user.Time}</h3>
-          </div>
-        );
-      })}
       <div className="register-box">
         <form className="add-form" onSubmit={onSubmit}>
           <div className="form-control">
@@ -83,14 +78,15 @@ function Register() {
               className="input-style"
               type="password"
               value={confirmPassword}
-              onChange={(e) => setConfirm(e.target.value)}
+              onChange={(e) => setConfirmPassword(e.target.value)}
             />
           </div>
-          {/* <Link to="/login" style={{ textDecoration: "none" }}> */}
+          {/* <Link  to="/login" style={{ textDecoration: "none" }}> */}
           <input
             type="submit"
             value="REGISTER"
             className="btn btn-block-login"
+            // path="/login"
           />
           {/* </Link> */}
         </form>
