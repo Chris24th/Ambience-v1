@@ -37,7 +37,7 @@ function ForgotPassword() {
             <label>Password</label>
             <input
               className="input-style"
-              type="text"
+              type="password"
               value={password}
               onChange={(e) => setPass(e.target.value)}
             />
@@ -46,7 +46,7 @@ function ForgotPassword() {
             <label>New Password</label>
             <input
               className="input-style"
-              type="text"
+              type="password"
               value={newPass}
               onChange={(e) => setNewPass(e.target.value)}
             />
@@ -55,7 +55,7 @@ function ForgotPassword() {
             <label>Confirm Password</label>
             <input
               className="input-style"
-              type="text"
+              type="password"
               value={confirmPassword}
               onChange={(e) => setConfirmPass(e.target.value)}
             />
