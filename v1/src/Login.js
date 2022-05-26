@@ -1,23 +1,48 @@
 import React from "react";
 import MainHeader from "./Components/MainHeader";
 import MainLogo from "./Components/mlogo.svg";
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "./firebase";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPass] = useState("");
-  const onSubmit = (e) => {
-    e.preventDefault();
+  const usersCollectionRef = collection(db, "users");
+  const navigate = useNavigate();
+  const [users, setUsers] = useState([]);
+  const check = useState(false);
 
+  useEffect(() => {
+    const getUsers = async () => {
+      const data = await getDocs(usersCollectionRef);
+      setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    };
+
+    getUsers();
+  }, []);
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
     if (!email || !password) {
       alert("Please Fillout");
       return;
     }
-    // onAdd({ text, day, reminder })
-    setEmail("");
-    setPass("");
+    await getDocs(usersCollectionRef, {
+      Email: email,
+      Password: password,
+    });
+    users.map((user) => {
+      if (user.Email === email && user.Password === password) {
+        alert("You successfully logged in");
+        navigate("/");
+        check = true;
+      }
+    });
+    alert("Please check your credentials.");
   };
+
   return (
     <div className="login-container">
       <div>
@@ -52,13 +77,7 @@ function Login() {
               onChange={(e) => setPass(e.target.value)}
             />
           </div>
-          <Link to="/" style={{ textDecoration: "none" }}>
-            <input
-              type="submit"
-              value="LOGIN"
-              className="btn btn-block-login"
-            />
-          </Link>
+          <input type="submit" value="LOGIN" className="btn btn-block-login" />
         </form>
         <div className="login-under">
           <div>

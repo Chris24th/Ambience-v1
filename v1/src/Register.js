@@ -91,7 +91,7 @@ function Register({ Login }) {
           {/* </Link> */}
         </form>
         <Link to="/login" style={{ textDecoration: "none" }}>
-          Login
+          I already have an Account
         </Link>
       </div>
       <div>
