@@ -1,16 +1,20 @@
 import MainLogo from "./Components/mlogo.svg";
-import Login from "./Login";
+import {
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+} from "firebase/auth";
+import { auth } from "./firebase";
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { db } from "./firebase";
-import { collection, getDocs, addDoc } from "firebase/firestore";
+// import { db } from "./firebase";
+// import { collection, getDocs, addDoc } from "firebase/firestore";
 
 function Register({ Login }) {
   const [newEmail, setNewEmail] = useState("");
   const [newPassword, setNewPassword] = useState("");
+  const [user, setUser] = useState([]);
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [users, setUsers] = useState([]);
-  const usersCollectionRef = collection(db, "users");
+  // const usersCollectionRef = collection(db, "users");
   const navigate = useNavigate();
 
   // const createUser = async () => {
@@ -20,14 +24,14 @@ function Register({ Login }) {
   //   });
   // };
 
-  useEffect(() => {
-    const getUsers = async () => {
-      const data = await getDocs(usersCollectionRef);
-      setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    };
+  // useEffect(() => {
+  //   const getUsers = async () => {
+  //     const data = await getDocs(usersCollectionRef);
+  //     setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+  //   };
 
-    getUsers();
-  }, []);
+  //   getUsers();
+  // }, []);
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -36,12 +40,19 @@ function Register({ Login }) {
       return;
     } else {
       if (newPassword === confirmPassword) {
-        await addDoc(usersCollectionRef, {
-          Email: newEmail,
-          Password: newPassword,
-        });
-        alert("You created an Account! Please Log in");
-        navigate("/login");
+        try {
+          const user = await createUserWithEmailAndPassword(
+            auth,
+            newEmail,
+            newPassword
+          );
+          alert("You created an Account!");
+          // navigate("/");
+        } catch (error) {
+          alert(
+            "Please input a valid email. Passwords should have at least 6 characters"
+          );
+        }
         return;
       } else {
         alert("Passwords do not match!");
@@ -50,8 +61,14 @@ function Register({ Login }) {
     }
   };
 
+  onAuthStateChanged(auth, (currentUser) => {
+    setUser(currentUser);
+  });
+
   return (
     <div className="login-container">
+      welcome,
+      {/* {user?.newEmail} */}
       <div className="register-box">
         <form className="add-form" onSubmit={onSubmit}>
           <div className="form-control">
@@ -81,14 +98,11 @@ function Register({ Login }) {
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
           </div>
-          {/* <Link  to="/login" style={{ textDecoration: "none" }}> */}
           <input
             type="submit"
             value="REGISTER"
             className="btn btn-block-login"
-            // path="/login"
           />
-          {/* </Link> */}
         </form>
         <Link to="/login" style={{ textDecoration: "none" }}>
           I already have an Account

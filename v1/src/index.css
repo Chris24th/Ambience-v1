@@ -104,6 +104,8 @@ body {
   color: #fff;
   background-color: inherit;
   margin-left: 20px;
+  font-size: 12px;
+  font-weight: 100;
 }
 .container-about{
   display: flex;

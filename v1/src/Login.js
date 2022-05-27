@@ -1,27 +1,21 @@
 import React from "react";
-import MainHeader from "./Components/MainHeader";
 import MainLogo from "./Components/mlogo.svg";
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { collection, getDocs } from "firebase/firestore";
-import { db } from "./firebase";
+import { db, auth } from "./firebase";
+import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPass] = useState("");
-  const usersCollectionRef = collection(db, "users");
   const navigate = useNavigate();
-  const [users, setUsers] = useState([]);
+  const [user, setUser] = useState([]);
   const check = useState(false);
 
-  useEffect(() => {
-    const getUsers = async () => {
-      const data = await getDocs(usersCollectionRef);
-      setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    };
-
-    getUsers();
-  }, []);
+  onAuthStateChanged(auth, (currentUser) => {
+    setUser(currentUser);
+  });
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -29,22 +23,31 @@ function Login() {
       alert("Please Fillout");
       return;
     }
-    await getDocs(usersCollectionRef, {
-      Email: email,
-      Password: password,
-    });
-    users.map((user) => {
-      if (user.Email === email && user.Password === password) {
-        alert("You successfully logged in");
-        navigate("/");
-        check = true;
-      }
-    });
+    try {
+      const user = await signInWithEmailAndPassword(auth, email, password);
+    } catch (error) {
+      alert(error.message);
+    }
+
+    // if (currentuser.Email === email && user.Password === password) {
+    // alert("You successfully logged in");
+    // navigate("/");
+    // check = true;
+    // }
     alert("Please check your credentials.");
   };
+  // const login = async () => {
+  //   try {
+  //     const user = await signInWithEmailAndPassword(auth, email, password);
+  //   } catch (error) {
+  //     console.log(error.message);
+  //   }
+  // };
 
   return (
     <div className="login-container">
+      welcome,
+      {/* {user?.email} */}
       <div>
         <img
           src={MainLogo}
@@ -82,12 +85,7 @@ function Login() {
         <div className="login-under">
           <div>
             <Link to="/register" style={{ textDecoration: "none" }}>
-              Register
-            </Link>
-          </div>
-          <div>
-            <Link to="/forgot-password" style={{ textDecoration: "none" }}>
-              Forgot Password?
+              Create an Account
             </Link>
           </div>
         </div>

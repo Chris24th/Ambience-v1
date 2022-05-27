@@ -1,20 +1,18 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "./Components/Header";
 import Tasks from "./Components/Tasks";
 import AddTask from "./Components/AddTask";
 import MainHeader from "./Components/MainHeader";
 import Pomodoro from "./Components/Pomodoro";
 import AllAudio from "./Components/AllAudio";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Switch,
-  Route,
-} from "react-router-dom";
+import Login from "./Login";
+import { db, auth } from "./firebase";
+import { onAuthStateChanged } from "firebase/auth";
 
-function Main() {
+function Main({ currentEmail }) {
   const [showAddTask, setShowAddTask] = useState(false);
+  const [user, setUser] = useState({});
   const [tasks, setTasks] = useState([
     {
       id: 1,
@@ -32,6 +30,7 @@ function Main() {
       day: "May 13, 4:30pm",
     },
   ]);
+
   //Add task
   const addTask = (task) => {
     const id = 5;
@@ -42,10 +41,17 @@ function Main() {
   const deleteTask = (id) => {
     setTasks(tasks.filter((task) => task.id !== id));
   };
+
+  onAuthStateChanged(auth, (currentUser) => {
+    setUser(currentUser);
+  });
+
   return (
     <div>
       <MainHeader />
       <div className="arrange">
+        Welcome,
+        {/* {user?.email} */}
         <div className="container-pomodoro">
           <Pomodoro />
         </div>
@@ -53,7 +59,6 @@ function Main() {
           <AllAudio />
         </div>
       </div>
-
       <div className="container-tasks">
         <Header
           onAdd={() => setShowAddTask(!showAddTask)}

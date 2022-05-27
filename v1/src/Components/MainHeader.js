@@ -1,16 +1,18 @@
 // import AboutUs from './AboutUs'
-import SignOut from "./SignOut";
 import MainLogo from "./mlogo.svg";
 import Menu from "./Menu";
 import { AiOutlineMenu } from "react-icons/ai";
 import { useState } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
-// import DropdownButton from "react-bootstrap/DropdownButton";
 import { Link } from "react-router-dom";
+import { signOut } from "firebase/auth";
+import { auth } from "../firebase";
 
-const MainHeader = ({ signOut }) => {
+const MainHeader = () => {
   const [open, setOpen] = useState(false);
-
+  const logout = async () => {
+    await signOut(auth);
+  };
   return (
     <div>
       <header className="header container-header">
@@ -27,8 +29,8 @@ const MainHeader = ({ signOut }) => {
         <Link to="/">
           <img src={MainLogo} className="mainLogo" alt="error" />
         </Link>
-        <Link to="/login" style={{ textDecoration: "none" }}>
-          <SignOut onClick={signOut} />
+        <Link onClick={logout} to="/login" style={{ textDecoration: "none" }}>
+          Logout
         </Link>
       </header>
     </div>
