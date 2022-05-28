@@ -6,32 +6,13 @@ import {
 import { auth } from "./firebase";
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-// import { db } from "./firebase";
-// import { collection, getDocs, addDoc } from "firebase/firestore";
 
 function Register({ Login }) {
   const [newEmail, setNewEmail] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [user, setUser] = useState([]);
   const [confirmPassword, setConfirmPassword] = useState("");
-  // const usersCollectionRef = collection(db, "users");
   const navigate = useNavigate();
-
-  // const createUser = async () => {
-  //   await addDoc(usersCollectionRef, {
-  //     Email: newEmail,
-  //     Password: newPassword,
-  //   });
-  // };
-
-  // useEffect(() => {
-  //   const getUsers = async () => {
-  //     const data = await getDocs(usersCollectionRef);
-  //     setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-  //   };
-
-  //   getUsers();
-  // }, []);
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -47,7 +28,7 @@ function Register({ Login }) {
             newPassword
           );
           alert("You created an Account!");
-          // navigate("/");
+          navigate("/");
         } catch (error) {
           alert(
             "Please input a valid email. Passwords should have at least 6 characters"
@@ -67,8 +48,6 @@ function Register({ Login }) {
 
   return (
     <div className="login-container">
-      welcome,
-      {/* {user?.newEmail} */}
       <div className="register-box">
         <form className="add-form" onSubmit={onSubmit}>
           <div className="form-control">

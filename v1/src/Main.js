@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Header from "./Components/Header";
 import Tasks from "./Components/Tasks";
@@ -8,11 +9,23 @@ import Pomodoro from "./Components/Pomodoro";
 import AllAudio from "./Components/AllAudio";
 import Login from "./Login";
 import { db, auth } from "./firebase";
-import { onAuthStateChanged } from "firebase/auth";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { collection, getDocs, addDoc } from "firebase/firestore";
 
-function Main({ currentEmail }) {
+function Main() {
   const [showAddTask, setShowAddTask] = useState(false);
   const [user, setUser] = useState({});
+  const [users, setUsers] = useState([]);
+  const userCollectionRef = collection(db, "users");
+  const navigate = useNavigate();
+  useEffect(() => {
+    const getUsers = async () => {
+      const data = await getDocs(userCollectionRef);
+      setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    };
+
+    getUsers();
+  }, []);
   const [tasks, setTasks] = useState([
     {
       id: 1,
@@ -44,14 +57,15 @@ function Main({ currentEmail }) {
 
   onAuthStateChanged(auth, (currentUser) => {
     setUser(currentUser);
+    if (!user) {
+      navigate("/login");
+    }
   });
 
   return (
     <div>
       <MainHeader />
       <div className="arrange">
-        Welcome,
-        {/* {user?.email} */}
         <div className="container-pomodoro">
           <Pomodoro />
         </div>

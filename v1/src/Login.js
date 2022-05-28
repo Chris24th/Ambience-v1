@@ -10,12 +10,7 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPass] = useState("");
   const navigate = useNavigate();
-  const [user, setUser] = useState([]);
   const check = useState(false);
-
-  onAuthStateChanged(auth, (currentUser) => {
-    setUser(currentUser);
-  });
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -25,29 +20,15 @@ function Login() {
     }
     try {
       const user = await signInWithEmailAndPassword(auth, email, password);
+      alert("You successfully logged in");
+      navigate("/");
     } catch (error) {
-      alert(error.message);
+      alert("Please check your credentials.");
     }
-
-    // if (currentuser.Email === email && user.Password === password) {
-    // alert("You successfully logged in");
-    // navigate("/");
-    // check = true;
-    // }
-    alert("Please check your credentials.");
   };
-  // const login = async () => {
-  //   try {
-  //     const user = await signInWithEmailAndPassword(auth, email, password);
-  //   } catch (error) {
-  //     console.log(error.message);
-  //   }
-  // };
 
   return (
     <div className="login-container">
-      welcome,
-      {/* {user?.email} */}
       <div>
         <img
           src={MainLogo}
