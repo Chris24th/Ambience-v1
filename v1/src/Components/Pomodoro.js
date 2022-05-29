@@ -1,41 +1,56 @@
-import PropTypes from 'prop-types'
-// import {MdWorkOutline} from 'react-icons/md'
+import PropTypes from "prop-types";
+import { useState, useEffect } from "react";
 
-const Pomodoro = ({work, breakTime, timer,start}) => {
+const Pomodoro = () => {
+  const [showBreak, setShowBreak] = useState(false);
+  const [showWork, setShowWork] = useState(true);
+  const [pTimer, setPTimer] = useState("");
+
+  useEffect(() => {
+    if (showWork === true) {
+      setPTimer("55:00");
+    } else {
+      setPTimer("10:00");
+    }
+  });
+
+  const onStart = () => {
+    alert("starting");
+  };
+  const onWork = () => {
+    setShowBreak(false);
+    setShowWork(true);
+  };
+  const onBreak = () => {
+    setShowWork(false);
+    setShowBreak(true);
+  };
+  // useEffect = () => {
+
+  // if (showWork === true) {
+  //   setPTimer("55:00");
+  // } else {
+  //   setPTimer("10:00");
+  // }
+  // };
   return (
-    <div >
-        <header>
-          <label className='header-pomodoro'>
-            <div className='work-break'>
-              {work}
-            </div>
-            <div className='work-break'>
-              {breakTime}
-            </div>
+    <div>
+      <header>
+        <div className="header-pomodoro">
+          <label onClick={onWork} className="work-break">
+            Work
           </label>
-          <label className='timer'>
-            {timer} 
+          <label onClick={onBreak} className="work-break">
+            Break
           </label>
-          <button className='startBtn'>
-            {start}
-          </button>
-        </header>
+        </div>
+        <label className="timer">{pTimer}</label>
+        <button onClick={onStart} className="startBtn">
+          Start
+        </button>
+      </header>
     </div>
-  )
-}
+  );
+};
 
-Pomodoro.defaultProps = {
-  work: 'Work',
-  breakTime: 'Break',
-  timer: '55:00',
-  start: 'Start'
-}
-
-Pomodoro.propTypes = {
-  work: PropTypes.string,
-  break: PropTypes.string,
-  timer: PropTypes.string,
-  start: PropTypes.string,
-}
-
-export default Pomodoro
+export default Pomodoro;

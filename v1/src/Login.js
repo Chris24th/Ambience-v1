@@ -20,7 +20,6 @@ function Login() {
     }
     try {
       const user = await signInWithEmailAndPassword(auth, email, password);
-      alert("You successfully logged in");
       navigate("/");
     } catch (error) {
       alert("Please check your credentials.");

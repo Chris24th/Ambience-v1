@@ -1,21 +1,16 @@
-import { FaTimes } from 'react-icons/fa'
+import { FaTimes } from "react-icons/fa";
 
-const Task = ({ task, onDelete, onToggle }) => {
+const Task = ({ task, onDelete }) => {
   return (
-    
-    <div className = 'task'>
-      <input type='checkbox' className='check-task'/>
-      <div className='task-info'>
-          <h3>
-              {task.text}  
-          </h3>
-          <FaTimes className='x-btn'
-            onClick = {() => onDelete(task.id)}
-          />
+    <div className="task">
+      <input type="checkbox" className="check-task" />
+      <div className="task-info">
+        <h3>{task.text}</h3>
+        <FaTimes className="x-btn" onClick={() => onDelete(task.id)} />
       </div>
       <p>{task.day}</p>
     </div>
-  )
-}
+  );
+};
 
-export default Task
+export default Task;

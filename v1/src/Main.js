@@ -16,56 +16,92 @@ function Main() {
   const [showAddTask, setShowAddTask] = useState(false);
   const [user, setUser] = useState({});
   const [users, setUsers] = useState([]);
+  const [taskText, setTaskText] = useState([]);
+  const [taskTime, setTaskTime] = useState([]);
+  const [currentEmailFS, setCurrentEmailFS] = useState("");
   const userCollectionRef = collection(db, "users");
   const navigate = useNavigate();
+  const [tasks, setTasks] = useState([]);
+
   useEffect(() => {
     const getUsers = async () => {
       const data = await getDocs(userCollectionRef);
       setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     };
-
     getUsers();
   }, []);
-  const [tasks, setTasks] = useState([
-    {
-      id: 1,
-      text: "CPE366 - Assignment",
-      day: "May 17, 8:30am",
-    },
-    {
-      id: 2,
-      text: "CPE355 - Study for quiz",
-      day: "May 16, 12:30pm",
-    },
-    {
-      id: 3,
-      text: "CPE355 - Main user interface",
-      day: "May 13, 4:30pm",
-    },
-  ]);
 
-  //Add task
-  const addTask = (task) => {
-    const id = 5;
-    const newTask = { id, ...task };
-    setTasks([...tasks, newTask]);
-  };
-  //delete task
-  const deleteTask = (id) => {
-    setTasks(tasks.filter((task) => task.id !== id));
-  };
-
-  onAuthStateChanged(auth, (currentUser) => {
-    setUser(currentUser);
+  useEffect(() => {
+    // setUser(auth.currentUser);
     if (!user) {
       navigate("/login");
+    } else {
+      setCurrentEmailFS(user.email);
+      users.map((userFS) => {
+        if (userFS.email === user.email) {
+          setTaskText(userFS.tasksDB);
+          setTaskTime(userFS.time);
+        }
+      });
     }
+    setTasks([
+      { id: 0, text: taskText[0], day: taskTime[0] },
+      { id: 1, text: taskText[1], day: taskTime[1] },
+    ]);
   });
+
+  // const [tasks, setTasks] = useState([
+  // {
+  //   id: 1,
+  //   text: "text1",
+  //   day: "May 17, 8:30am",
+  // },
+  // {
+  //   id: 2,
+  //   text: "CPE355 - Study for quiz",
+  //   day: "May 16, 12:30pm",
+  // },
+  // {
+  //   id: 3,
+  //   text: "CPE355 - Main user interface",
+  //   day: "May 13, 4:30pm",
+  // },
+  // ]);
+
+  onAuthStateChanged(auth, (currentUser) => {
+    setUser(auth.currentUser);
+  });
+
+  //delete task
+  // const deleteTask = (id) => {
+  //   setTasks(tasks.filter((task) => task.id !== id));
+  // };
+
+  //Add task
+  // const addTask = (task) => {
+  //   const id = 5;
+  //   const newTask = { id, ...task };
+  //   setTasks([...tasks, newTask]);
+  // };
 
   return (
     <div>
       <MainHeader />
       <div className="arrange">
+        {currentEmailFS}
+        {/*{users.map((userFS) => {
+          if (userFS.email === user.email) {
+            // setTasks.text("test");
+            // return (
+            //   <div style={{ display: "inline-block" }}>
+            //     {userFS.task1}
+            //     <br /> {userFS.time1}
+            //     <br /> {userFS.email}
+            //     <br /> {user.email}
+            //   </div>
+            // );
+          }
+        })} */}
         <div className="container-pomodoro">
           <Pomodoro />
         </div>
@@ -78,9 +114,16 @@ function Main() {
           onAdd={() => setShowAddTask(!showAddTask)}
           showAdd={showAddTask}
         />
-        {showAddTask && <AddTask onAdd={addTask} />}
+        {showAddTask && (
+          <AddTask
+          // onAdd={addTask}
+          />
+        )}
         {tasks.length > 0 ? (
-          <Tasks tasks={tasks} onDelete={deleteTask} />
+          <Tasks
+            tasks={tasks}
+            // onDelete={deleteTask}
+          />
         ) : (
           "No Tasks to show"
         )}

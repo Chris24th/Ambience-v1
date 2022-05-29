@@ -57,6 +57,7 @@ body {
   flex-wrap: wrap;
   align-items: center;
   margin-top: 70px;
+  margin-bottom: 9%;
 }
 .login-box{
   display: flex;
@@ -89,12 +90,14 @@ body {
   margin-top: 40px;
   padding-right: 150px;
   border-right: solid 2px #806B6B;
+  margin-bottom: 5%;
 }
 .container-footer{
   display: flex;
   width: 100%;
   bottom: 0;
-  position: fixed;
+  top: 1000px;
+  /* position: fixed; */
   height: 30px;
   background-color: #806B6B;
 }
@@ -116,7 +119,7 @@ body {
   padding: 40px;
   width: 70%;
   height: 80%;
-  margin-top: 100px;
+  margin-top: 70px;
   background-color: rgb(168,155,147);
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
   border-radius: 40px;
@@ -165,17 +168,33 @@ body {
 .chris{
   border: none;
   border-radius: 40px;
-  width: 50%;
-  height: 100px;
+  width: 49.5%;
+  height: auto;
+  background-color: inherit;
+}
+.chris h3{
+  text-align: center;
+  background-color: inherit;
+  margin-top: 30px;
+}
+.name-divider{
+  height: 400px;
+  width: 1%;
+  border: none;
+  border-right: solid 1px #806B6B;
   background-color: inherit;
 }
 .kent{
   border: none;
   border-radius: 40px;
-  width: 50%;
-  height: 100px;
+  width: 49.5%;
+  height: auto;
   background-color: inherit;
-
+}
+.kent h3{
+  text-align: center;
+  background-color: inherit;
+  margin-top: 30px;
 }
 .audio-font{
   display: block;
@@ -286,7 +305,13 @@ body {
   margin-bottom: 20px;
   font-family: inherit;
 }
-
+.about-logout{
+  display: flex;
+  justify-content: space-between;
+  width: 15%;
+}
+.about-logout label{
+}
 .header-pomodoro {
   display:flex;
   /* text-align: center; */

@@ -16,7 +16,38 @@ const MainHeader = () => {
   return (
     <div>
       <header className="header container-header">
-        <Dropdown>
+        <Link to="/">
+          <img src={MainLogo} className="mainLogo" alt="error" />
+        </Link>
+        <div className="about-logout">
+          <label>
+            <Link
+              onClick={logout}
+              to="/about"
+              style={{ textDecoration: "none" }}
+            >
+              About
+            </Link>
+          </label>
+          <label>
+            <Link
+              onClick={logout}
+              to="/login"
+              style={{ textDecoration: "none" }}
+            >
+              Sign out
+            </Link>
+          </label>
+        </div>
+      </header>
+    </div>
+  );
+};
+
+export default MainHeader;
+
+{
+  /* <Dropdown>
           <Dropdown.Toggle style={{ backgroundColor: "inherit" }}>
             <AiOutlineMenu
               className="icon-menu"
@@ -25,16 +56,5 @@ const MainHeader = () => {
           </Dropdown.Toggle>
 
           <Dropdown.Menu>{open ? <Menu /> : ""}</Dropdown.Menu>
-        </Dropdown>
-        <Link to="/">
-          <img src={MainLogo} className="mainLogo" alt="error" />
-        </Link>
-        <Link onClick={logout} to="/login" style={{ textDecoration: "none" }}>
-          Logout
-        </Link>
-      </header>
-    </div>
-  );
-};
-
-export default MainHeader;
+        </Dropdown> */
+}
