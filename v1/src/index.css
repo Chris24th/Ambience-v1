@@ -74,7 +74,7 @@ body {
   display: flex;
   justify-content: space-between;
 }
-.header-login{
+.header-about{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -155,6 +155,7 @@ body {
   align-items: center;
   margin: auto;
   flex-wrap: wrap;
+  margin-bottom: 100px;
 }
 .container-team p{
   margin: 20px;
@@ -166,45 +167,48 @@ body {
   align-items: center;
 }
 .chris{
+  display: flex;
+  flex-direction: column;
   border: none;
   border-radius: 40px;
   width: 49.5%;
   height: auto;
   background-color: inherit;
+  text-align: center;
+  align-items: center;
+  overflow:auto;
+}
+.teamPics{
+  display: flex;
+  height: 250px;
+  width: 250px;
+  background-color: inherit;
+  margin: 30px;
 }
 .chris h3{
-  text-align: center;
   background-color: inherit;
-  margin-top: 30px;
-}
-.chris p{
-  display: flex;
-  overflow:auto;
-  text-align: center;
 }
 .name-divider{
-  height: 400px;
+  height: 350px;
   width: 1%;
   border: none;
   border-right: solid 1px #806B6B;
   background-color: inherit;
 }
 .kent{
+  display: flex;
+  flex-direction: column;
   border: none;
   border-radius: 40px;
   width: 49.5%;
   height: auto;
   background-color: inherit;
+  text-align: center;
+  align-items: center;
+  overflow:auto;
 }
 .kent h3{
-  text-align: center;
   background-color: inherit;
-  margin-top: 30px;
-}
-.kent p{
-  display: flex;
-  overflow:auto;
-  text-align: center;
 }
 .audio-font{
   display: block;
@@ -319,8 +323,6 @@ body {
   display: flex;
   justify-content: space-between;
   width: 250px;
-}
-.about-logout label{
 }
 .header-pomodoro {
   display:flex;

@@ -6,9 +6,13 @@ import { BiRadio } from "react-icons/bi";
 import { BsCloudRain } from "react-icons/bs";
 import { GiTreeBranch } from "react-icons/gi";
 import { GiCampfire } from "react-icons/gi";
+import lofi from '../Sound/lofi.mp3';
+import Sound from 'react-sound';
 
 const AllAudio = ({ lofi, rain, forest, fireplace }) => {
-  const onLofi = () => {};
+  const onLofi = () => {
+    return;
+  };
   const onRain = () => {};
   const onForest = () => {};
   const onFireplace = () => {};
@@ -16,6 +20,14 @@ const AllAudio = ({ lofi, rain, forest, fireplace }) => {
   return (
     <div>
       <div className="audio-font">
+      <Sound 
+        url={lofi}
+        playStatus={Sound.status.PLAYING}
+        playFromPosition={300}
+        // onLoading={handleSongLoading}
+        // onPlaying={handleSongPlaying}
+        // onFinishedPlaying={handleSongFinishedPlaying}
+        />
         {lofi} <AiOutlinePlayCircle onClick={onLofi} className="icon-play" />
         <div className="icon-align">
           <BiRadio className="icon-gen" />
