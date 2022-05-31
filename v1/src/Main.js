@@ -31,8 +31,11 @@ function Main() {
     getUsers();
   }, []);
 
-  useEffect(() => {
+  // useEffect(() => {
     // setUser(auth.currentUser);
+    
+  onAuthStateChanged(auth, (currentUser) => {
+    setUser(currentUser);
     if (!user) {
       navigate("/login");
     } else {
@@ -49,6 +52,7 @@ function Main() {
       { id: 1, text: taskText[1], day: taskTime[1] },
     ]);
   });
+  // });
 
   // const [tasks, setTasks] = useState([
   // {
@@ -68,9 +72,6 @@ function Main() {
   // },
   // ]);
 
-  onAuthStateChanged(auth, (currentUser) => {
-    setUser(auth.currentUser);
-  });
 
   //delete task
   // const deleteTask = (id) => {

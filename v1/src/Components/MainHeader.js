@@ -16,17 +16,14 @@ const MainHeader = () => {
   return (
     <div>
       <header className="header container-header">
-        <Link to="/">
           <img src={MainLogo} className="mainLogo" alt="error" />
-        </Link>
         <div className="about-logout">
           <label>
             <Link
-              onClick={logout}
               to="/about"
               style={{ textDecoration: "none" }}
             >
-              About
+              About Us
             </Link>
           </label>
           <label>

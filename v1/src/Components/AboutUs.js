@@ -21,7 +21,7 @@ function AboutUs() {
       <br />
       <br />
       <div className="container-team ">
-        <div className="chris ">
+        <div className="chris">
           <h3>Christopher M. Espenida</h3>
           <p>Email: christopher.espenida@cit.edu</p>
         </div>
