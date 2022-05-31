@@ -7,7 +7,7 @@ import AddTask from "./Components/AddTask";
 import MainHeader from "./Components/MainHeader";
 import Pomodoro from "./Components/Pomodoro";
 import AllAudio from "./Components/AllAudio";
-import Login from "./Login";
+import sLofi from "./Sound/lofi.mp3";
 import { db, auth } from "./firebase";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { collection, getDocs, addDoc } from "firebase/firestore";
@@ -22,6 +22,7 @@ function Main() {
   const userCollectionRef = collection(db, "users");
   const navigate = useNavigate();
   const [tasks, setTasks] = useState([]);
+  const audioTune = new Audio(sLofi);
 
   useEffect(() => {
     const getUsers = async () => {
@@ -29,11 +30,19 @@ function Main() {
       setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     };
     getUsers();
+    audioTune.load();
   }, []);
 
-  // useEffect(() => {
-    // setUser(auth.currentUser);
-    
+  useEffect(() => {
+    audioTune.loop = true;
+  });
+
+  const playSound = () => {
+    audioTune.play();
+  };
+
+  // setUser(auth.currentUser);
+
   onAuthStateChanged(auth, (currentUser) => {
     setUser(currentUser);
     if (!user) {
@@ -72,7 +81,6 @@ function Main() {
   // },
   // ]);
 
-
   //delete task
   // const deleteTask = (id) => {
   //   setTasks(tasks.filter((task) => task.id !== id));
@@ -89,6 +97,11 @@ function Main() {
     <div>
       <MainHeader />
       <div className="arrange">
+        <button
+        onClick={playSound}
+        >
+          start
+        </button>
         {currentEmailFS}
         {/*{users.map((userFS) => {
           if (userFS.email === user.email) {

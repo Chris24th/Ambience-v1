@@ -16,13 +16,10 @@ const MainHeader = () => {
   return (
     <div>
       <header className="header container-header">
-          <img src={MainLogo} className="mainLogo" alt="error" />
+        <img src={MainLogo} className="mainLogo" alt="error" />
         <div className="about-logout">
           <label>
-            <Link
-              to="/about"
-              style={{ textDecoration: "none" }}
-            >
+            <Link to="/about" style={{ textDecoration: "none" }}>
               About Us
             </Link>
           </label>

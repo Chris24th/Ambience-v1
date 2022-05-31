@@ -6,36 +6,66 @@ import { BiRadio } from "react-icons/bi";
 import { BsCloudRain } from "react-icons/bs";
 import { GiTreeBranch } from "react-icons/gi";
 import { GiCampfire } from "react-icons/gi";
-import lofi from '../Sound/lofi.mp3';
-import Sound from 'react-sound';
+import { useEffect } from "react";
+import sLofi from "../Sound/lofi.mp3";
+import sRain from "../Sound/rain.mp3";
+import sForest from "../Sound/forest.mp3";
+import sFireplace from "../Sound/fireplace.mp3";
 
-const AllAudio = ({ lofi, rain, forest, fireplace }) => {
+const AllAudio = ({
+  handleSongLoading,
+  handleSongPlaying,
+  handleSongFinishedPlaying,
+}) => {
+  const lofiTune = new Audio(sLofi);
+  const rainTune = new Audio(sLofi);
+  const forestTune = new Audio(sLofi);
+  const fireplaceTune = new Audio(sLofi);
+
+  useEffect(() => {
+    lofiTune.load();
+    rainTune.load();
+    forestTune.load();
+    fireplaceTune.load();
+  }, []);
+
+  useEffect(() => {
+    lofiTune.loop = true;
+  });
+
   const onLofi = () => {
-    return;
+    lofiTune.play();
   };
-  const onRain = () => {};
-  const onForest = () => {};
-  const onFireplace = () => {};
+
+  const onRain = () => {
+    rainTune.play();
+  };
+  const onForest = () => {
+    forestTune.play();
+  };
+  const onFireplace = () => {
+    fireplaceTune.play();
+  };
+
+  useEffect(() => {
+    lofiTune.loop = true;
+    rainTune.loop = true;
+    forestTune.loop = true;
+    fireplaceTune.loop = true;
+  });
 
   return (
     <div>
       <div className="audio-font">
-      <Sound 
-        url={lofi}
-        playStatus={Sound.status.PLAYING}
-        playFromPosition={300}
-        // onLoading={handleSongLoading}
-        // onPlaying={handleSongPlaying}
-        // onFinishedPlaying={handleSongFinishedPlaying}
-        />
-        {lofi} <AiOutlinePlayCircle onClick={onLofi} className="icon-play" />
+        LoFi Radio
+        <AiOutlinePlayCircle onClick={onLofi} className="icon-play" />
         <div className="icon-align">
           <BiRadio className="icon-gen" />
           <RangeStepInput key="lofi" min="0" max="100" />
         </div>
       </div>
       <div className="audio-font">
-        {rain} <AiOutlinePlayCircle onClick={onRain} className="icon-play" />
+        Rain <AiOutlinePlayCircle onClick={onRain} className="icon-play" />
         <br />
         <div className="icon-align">
           <BsCloudRain className="icon-gen" />
@@ -43,8 +73,7 @@ const AllAudio = ({ lofi, rain, forest, fireplace }) => {
         </div>
       </div>
       <div className="audio-font">
-        {forest}{" "}
-        <AiOutlinePlayCircle onClick={onForest} className="icon-play" />
+        Forest <AiOutlinePlayCircle onClick={onForest} className="icon-play" />
         <br />
         <div className="icon-align">
           <GiTreeBranch className="icon-gen" />
@@ -52,7 +81,7 @@ const AllAudio = ({ lofi, rain, forest, fireplace }) => {
         </div>
       </div>
       <div className="audio-font">
-        {fireplace}{" "}
+        Fireplace{" "}
         <AiOutlinePlayCircle onClick={onFireplace} className="icon-play" />
         <div className="icon-align">
           <GiCampfire className="icon-gen" />
@@ -61,20 +90,6 @@ const AllAudio = ({ lofi, rain, forest, fireplace }) => {
       </div>
     </div>
   );
-};
-
-AllAudio.defaultProps = {
-  lofi: "Lofi Radio",
-  rain: "Rain",
-  forest: "Forest",
-  fireplace: "Fireplace",
-};
-
-AllAudio.propTypes = {
-  lofi: PropTypes.string,
-  rain: PropTypes.string,
-  forest: PropTypes.string,
-  fireplace: PropTypes.string,
 };
 
 export default AllAudio;
