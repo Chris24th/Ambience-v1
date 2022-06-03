@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import { RangeStepInput } from "react-range-step-input";
 import { AiOutlinePlayCircle } from "react-icons/ai";
 // import {HiOutlineVolumeUp} from 'react-icons/hi'
@@ -11,75 +10,72 @@ import sLofi from "../Sound/lofi.mp3";
 import sRain from "../Sound/rain.mp3";
 import sForest from "../Sound/forest.mp3";
 import sFireplace from "../Sound/fireplace.mp3";
+import ReactAudioPlayer from "react-audio-player";
 
 const AllAudio = ({
   handleSongLoading,
   handleSongPlaying,
   handleSongFinishedPlaying,
 }) => {
-  const lofiTune = new Audio(sLofi);
-  const rainTune = new Audio(sRain);
-  const forestTune = new Audio(sForest);
-  const fireplaceTune = new Audio(sFireplace);
-  const [volLofi, setVolLofi] = useState(0);
+  // const rainTune = new Audio(sRain);
+  // const forestTune = new Audio(sForest);
+  // const fireplaceTune = new Audio(sFireplace);
+  const [volLofi, setVolLofi] = useState(0.5);
+  const [playing, setPlaying] = useState(false);
 
-  useEffect(() => {
-    lofiTune.load();
-    rainTune.load();
-    forestTune.load();
-    fireplaceTune.load();
-  }, []);
+  useEffect(() => {}, []);
 
-  useEffect(() => {
-    lofiTune.loop = true;
-    rainTune.loop = true;
-    forestTune.loop = true;
-    fireplaceTune.loop = true;
-    // lofiTune.volume = volLofi;
-  });
+  //   // lofiTune.load();
+  //   // rainTune.load();
+  //   // forestTune.load();
+  //   // fireplaceTune.load();
+  // }, []);
 
-  const onLofi = () => {
+  // useEffect(() => {
+  //   lofiTune.loop = true;
+  //   rainTune.loop = true;
+  //   forestTune.loop = true;
+  //   fireplaceTune.loop = true;
+  //   // lofiTune.volume = volLofi;
+  // });
+
+  const onLofi = (e) => {
+    setVolLofi(e.target.value / 100);
+    const lofiTune = new Audio(sLofi);
+    lofiTune.volume = volLofi;
+    if (playing === true) return;
     lofiTune.play();
+    setPlaying(true);
   };
+
+  // const onChangeLofi = (e) => {
+  // };
 
   const onRain = () => {
-    rainTune.play();
+    // rainTune.play();
   };
   const onForest = () => {
-    forestTune.play();
+    // forestTune.play();
   };
   const onFireplace = () => {
-    fireplaceTune.play();
+    // fireplaceTune.play();
   };
-
-  useEffect(() => {
-    lofiTune.loop = true;
-    rainTune.loop = true;
-    forestTune.loop = true;
-    fireplaceTune.loop = true;
-  });
 
   // onChange(e) {
   //   const newVal = forceNumber(e.target.value);
   //   this.setState({ value: newVal });
   // }
-
   return (
     <div>
       <div className="audio-font">
         LoFi Radio vol: {volLofi}
-        {/* {lofiTune.volume} */}
         <AiOutlinePlayCircle onClick={onLofi} className="icon-play" />
         <div className="icon-align">
           <BiRadio className="icon-gen" />
-          <RangeStepInput
-            key="lofi"
-            min="0"
-            max="100"
-            onChange={(e) => setVolLofi(e.target.value / 100)}
-          />
+          <RangeStepInput key="lofi" min="0" max="100" onChange={onLofi} />
         </div>
       </div>
+
       <div className="audio-font">
         Rain <AiOutlinePlayCircle onClick={onRain} className="icon-play" />
         <br />

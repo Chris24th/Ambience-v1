@@ -11,17 +11,23 @@ import {
   Route,
 } from "react-router-dom";
 
-function App() {
+function App({
+  handleSongLoading,
+  handleSongPlaying,
+  handleSongFinishedPlaying,
+}) {
   return (
-    <Router>
-      <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/" element={<Main />} />
-        <Route path="/about" element={<AboutUs />} />
-        <Route path="/register" element={<Register />} />
-      </Routes>
-      <Footer />
-    </Router>
+    <>
+      <Router>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<Main />} />
+          <Route path="/about" element={<AboutUs />} />
+          <Route path="/register" element={<Register />} />
+        </Routes>
+        <Footer />
+      </Router>
+    </>
   );
 }
 export default App;

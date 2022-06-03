@@ -30,8 +30,6 @@ function Main() {
     getUsers();
   }, []);
 
-  // setUser(auth.currentUser);
-
   onAuthStateChanged(auth, (currentUser) => {
     setUser(currentUser);
     if (!user) {
@@ -87,19 +85,6 @@ function Main() {
       <MainHeader />
       <div className="arrange">
         {currentEmailFS}
-        {/*{users.map((userFS) => {
-          if (userFS.email === user.email) {
-            // setTasks.text("test");
-            // return (
-            //   <div style={{ display: "inline-block" }}>
-            //     {userFS.task1}
-            //     <br /> {userFS.time1}
-            //     <br /> {userFS.email}
-            //     <br /> {user.email}
-            //   </div>
-            // );
-          }
-        })} */}
         <div className="container-pomodoro">
           <Pomodoro />
         </div>
