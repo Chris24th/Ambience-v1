@@ -6,7 +6,7 @@ import { BiRadio } from "react-icons/bi";
 import { BsCloudRain } from "react-icons/bs";
 import { GiTreeBranch } from "react-icons/gi";
 import { GiCampfire } from "react-icons/gi";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import sLofi from "../Sound/lofi.mp3";
 import sRain from "../Sound/rain.mp3";
 import sForest from "../Sound/forest.mp3";
@@ -18,9 +18,10 @@ const AllAudio = ({
   handleSongFinishedPlaying,
 }) => {
   const lofiTune = new Audio(sLofi);
-  const rainTune = new Audio(sLofi);
-  const forestTune = new Audio(sLofi);
-  const fireplaceTune = new Audio(sLofi);
+  const rainTune = new Audio(sRain);
+  const forestTune = new Audio(sForest);
+  const fireplaceTune = new Audio(sFireplace);
+  const [volLofi, setVolLofi] = useState(0);
 
   useEffect(() => {
     lofiTune.load();
@@ -31,6 +32,10 @@ const AllAudio = ({
 
   useEffect(() => {
     lofiTune.loop = true;
+    rainTune.loop = true;
+    forestTune.loop = true;
+    fireplaceTune.loop = true;
+    // lofiTune.volume = volLofi;
   });
 
   const onLofi = () => {
@@ -54,14 +59,25 @@ const AllAudio = ({
     fireplaceTune.loop = true;
   });
 
+  // onChange(e) {
+  //   const newVal = forceNumber(e.target.value);
+  //   this.setState({ value: newVal });
+  // }
+
   return (
     <div>
       <div className="audio-font">
-        LoFi Radio
+        LoFi Radio vol: {volLofi}
+        {/* {lofiTune.volume} */}
         <AiOutlinePlayCircle onClick={onLofi} className="icon-play" />
         <div className="icon-align">
           <BiRadio className="icon-gen" />
-          <RangeStepInput key="lofi" min="0" max="100" />
+          <RangeStepInput
+            key="lofi"
+            min="0"
+            max="100"
+            onChange={(e) => setVolLofi(e.target.value / 100)}
+          />
         </div>
       </div>
       <div className="audio-font">
