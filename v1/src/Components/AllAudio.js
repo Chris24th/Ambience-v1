@@ -5,74 +5,65 @@ import { BiRadio } from "react-icons/bi";
 import { BsCloudRain } from "react-icons/bs";
 import { GiTreeBranch } from "react-icons/gi";
 import { GiCampfire } from "react-icons/gi";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import sLofi from "../Sound/lofi.mp3";
 import sRain from "../Sound/rain.mp3";
 import sForest from "../Sound/forest.mp3";
 import sFireplace from "../Sound/fireplace.mp3";
 import ReactAudioPlayer from "react-audio-player";
 
-const AllAudio = ({
-  handleSongLoading,
-  handleSongPlaying,
-  handleSongFinishedPlaying,
-}) => {
-  // const rainTune = new Audio(sRain);
-  // const forestTune = new Audio(sForest);
-  // const fireplaceTune = new Audio(sFireplace);
-  const [volLofi, setVolLofi] = useState(0.5);
-  const [playing, setPlaying] = useState(false);
-
+const AllAudio = ({}) => {
+  const lofiTune = useRef();
+  const rainTune = useRef();
+  const forestTune = useRef();
+  const fireplaceTune = useRef();
   useEffect(() => {}, []);
 
-  //   // lofiTune.load();
-  //   // rainTune.load();
-  //   // forestTune.load();
-  //   // fireplaceTune.load();
-  // }, []);
-
-  // useEffect(() => {
-  //   lofiTune.loop = true;
-  //   rainTune.loop = true;
-  //   forestTune.loop = true;
-  //   fireplaceTune.loop = true;
-  //   // lofiTune.volume = volLofi;
-  // });
-
-  const onLofi = (e) => {
-    setVolLofi(e.target.value / 100);
-    const lofiTune = new Audio(sLofi);
-    lofiTune.volume = volLofi;
-    if (playing === true) return;
-    lofiTune.play();
-    setPlaying(true);
+  const onLofi = () => {
+    if (lofiTune.current.paused === true) lofiTune.current.play();
+    else lofiTune.current.pause();
   };
-
-  // const onChangeLofi = (e) => {
-  // };
-
   const onRain = () => {
-    // rainTune.play();
+    if (rainTune.current.paused === true) rainTune.current.play();
+    else rainTune.current.pause();
   };
   const onForest = () => {
-    // forestTune.play();
+    if (forestTune.current.paused === true) forestTune.current.play();
+    else forestTune.current.pause();
   };
   const onFireplace = () => {
-    // fireplaceTune.play();
+    if (fireplaceTune.current.paused === true) fireplaceTune.current.play();
+    else fireplaceTune.current.pause();
+  };
+  const onVolLofi = (e) => {
+    lofiTune.current.play();
+    lofiTune.current.volume = e.target.value / 100;
+  };
+  const onVolRain = (e) => {
+    rainTune.current.play();
+    rainTune.current.volume = e.target.value / 100;
+  };
+  const onVolForest = (e) => {
+    forestTune.current.play();
+    forestTune.current.volume = e.target.value / 100;
+  };
+  const onVolFireplace = (e) => {
+    fireplaceTune.current.play();
+    fireplaceTune.current.volume = e.target.value / 100;
   };
 
-  // onChange(e) {
-  //   const newVal = forceNumber(e.target.value);
-  //   this.setState({ value: newVal });
-  // }
   return (
     <div>
       <div className="audio-font">
-        LoFi Radio vol: {volLofi}
+        <audio ref={lofiTune} src={sLofi} loop className="player" />
+        <audio ref={rainTune} src={sRain} loop className="player" />
+        <audio ref={forestTune} src={sForest} loop className="player" />
+        <audio ref={fireplaceTune} src={sFireplace} loop className="player" />
+        LoFi Radio
         <AiOutlinePlayCircle onClick={onLofi} className="icon-play" />
         <div className="icon-align">
           <BiRadio className="icon-gen" />
-          <RangeStepInput key="lofi" min="0" max="100" onChange={onLofi} />
+          <RangeStepInput min="0" max="100" onChange={onVolLofi} />
         </div>
       </div>
 
@@ -81,7 +72,7 @@ const AllAudio = ({
         <br />
         <div className="icon-align">
           <BsCloudRain className="icon-gen" />
-          <RangeStepInput key="rain" min="0" max="100" />
+          <RangeStepInput min="0" max="100" onChange={onVolRain} />
         </div>
       </div>
       <div className="audio-font">
@@ -89,7 +80,7 @@ const AllAudio = ({
         <br />
         <div className="icon-align">
           <GiTreeBranch className="icon-gen" />
-          <RangeStepInput key="forest" min="0" max="100" />
+          <RangeStepInput min="0" max="100" onChange={onVolForest} />
         </div>
       </div>
       <div className="audio-font">
@@ -97,7 +88,7 @@ const AllAudio = ({
         <AiOutlinePlayCircle onClick={onFireplace} className="icon-play" />
         <div className="icon-align">
           <GiCampfire className="icon-gen" />
-          <RangeStepInput key="fireplace" min="0" max="100" />
+          <RangeStepInput min="0" max="100" onChange={onVolFireplace} />
         </div>
       </div>
     </div>
