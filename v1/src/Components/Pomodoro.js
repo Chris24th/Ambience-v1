@@ -1,10 +1,16 @@
 import PropTypes from "prop-types";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import Countdown from "react-countdown";
 
 const Pomodoro = () => {
   const [showBreak, setShowBreak] = useState(false);
   const [showWork, setShowWork] = useState(true);
   const [pTimer, setPTimer] = useState("");
+  const [minutes, setMinutes] = useState();
+  const [seconds, setSeconds] = useState();
+  const [now, setNow] = useState();
+  const [countDownDate, setCountDownDate] = useState();
+  const [distance, setDistance] = useState();
 
   useEffect(() => {
     if (showWork === true) {
@@ -15,24 +21,36 @@ const Pomodoro = () => {
   });
 
   const onStart = () => {
-    alert("starting");
+    if (showWork === true) setCountDownDate(new Date().getTime() + 3300000);
+    else setCountDownDate(new Date().getTime() + 600000);
   };
   const onWork = () => {
     setShowBreak(false);
     setShowWork(true);
+    setCountDownDate();
   };
   const onBreak = () => {
     setShowWork(false);
     setShowBreak(true);
+    setCountDownDate();
   };
-  // useEffect = () => {
 
-  // if (showWork === true) {
-  //   setPTimer("55:00");
-  // } else {
-  //   setPTimer("10:00");
-  // }
-  // };
+  useEffect(() => {
+    // var x = setInterval(function () {
+    setNow(new Date().getTime());
+    setDistance(countDownDate - now);
+    setMinutes(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)));
+    setSeconds(Math.floor((distance % (1000 * 60)) / 1000));
+    if (!countDownDate && showWork === true) {
+      setMinutes(55);
+      setSeconds(0);
+    } else if (!countDownDate && showBreak === true) {
+      setMinutes(10);
+      setSeconds(0);
+    }
+    // });
+  });
+
   return (
     <div>
       <header>
@@ -44,7 +62,20 @@ const Pomodoro = () => {
             Break
           </label>
         </div>
-        <label className="timer">{pTimer}</label>
+        <label className="timer">
+          {minutes} : {seconds}
+          {/* <Countdown
+            date={Date.now() + 3300000}
+            intervalDelay={0}
+            precision={3}
+            // autoStart={true}
+            renderer={(props) => (
+              <div>
+                {props.minutes}:{props.seconds}
+              </div>
+            )}
+          /> */}
+        </label>
         <button onClick={onStart} className="startBtn">
           Start
         </button>
