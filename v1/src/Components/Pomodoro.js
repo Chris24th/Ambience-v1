@@ -1,6 +1,8 @@
 import PropTypes from "prop-types";
 import { useState, useEffect, useRef } from "react";
 import Countdown from "react-countdown";
+import beeping from "../Sound/beeping.mp3";
+import useSound from "use-sound";
 
 const Pomodoro = () => {
   const [showBreak, setShowBreak] = useState(false);
@@ -21,8 +23,8 @@ const Pomodoro = () => {
   });
 
   const onStart = () => {
-    if (showWork === true) setCountDownDate(new Date().getTime() + 3300000);
-    else setCountDownDate(new Date().getTime() + 600000);
+    if (showWork === true) setCountDownDate(new Date().getTime() + 3301000);
+    else setCountDownDate(new Date().getTime() + 601000);
   };
   const onWork = () => {
     setShowBreak(false);
@@ -36,7 +38,7 @@ const Pomodoro = () => {
   };
 
   useEffect(() => {
-    // var x = setInterval(function () {
+    const beep = new Audio(beeping);
     setNow(new Date().getTime());
     setDistance(countDownDate - now);
     setMinutes(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)));
@@ -48,7 +50,10 @@ const Pomodoro = () => {
       setMinutes(10);
       setSeconds(0);
     }
-    // });
+    if (distance < 0) {
+      setCountDownDate();
+      beep.play();
+    }
   });
 
   return (
@@ -64,17 +69,6 @@ const Pomodoro = () => {
         </div>
         <label className="timer">
           {minutes} : {seconds}
-          {/* <Countdown
-            date={Date.now() + 3300000}
-            intervalDelay={0}
-            precision={3}
-            // autoStart={true}
-            renderer={(props) => (
-              <div>
-                {props.minutes}:{props.seconds}
-              </div>
-            )}
-          /> */}
         </label>
         <button onClick={onStart} className="startBtn">
           Start
