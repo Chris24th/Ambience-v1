@@ -416,6 +416,10 @@ body {
 /* .container-list{
   width: 80%;
 } */
+.separate-task {
+  display: block;
+}
+
 .task {
   display: block;
   /* background-color: rgba(217, 213, 201); */

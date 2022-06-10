@@ -1,29 +1,18 @@
-import PropTypes from 'prop-types'
-import Button from './Button'
-import {BiNotepad} from 'react-icons/bi'
+import { BiNotepad } from "react-icons/bi";
 
-const Header = ({title, onAdd, showAdd}) => {
-    
+const Header = ({ addClicked, showAdd }) => {
   return (
     <div>
-        <header className='header'>
-            <h1><BiNotepad className='icon-task'/> {title}</h1>
-            <Button 
-                text={showAdd ? 'Close' : 'Add'}
-                onClick = {onAdd}
-            />
-        </header>
+      <header className="header">
+        <h1>
+          <BiNotepad className="icon-task" /> To Do List
+        </h1>
+        <button onClick={addClicked} className="btn">
+          {showAdd ? "Close" : "Add"}
+        </button>
+      </header>
     </div>
-  )
-}
+  );
+};
 
-Header.defaultProps = {
-    title: 'To Do List',
-}
-
-Header.propTypes = {
-    title: PropTypes.string.isRequired,
-}
-
-
-export default Header
+export default Header;

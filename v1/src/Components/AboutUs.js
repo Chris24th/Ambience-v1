@@ -1,18 +1,30 @@
-import React from "react";
+import { useState } from "react";
 import MainHeader from "./MainHeader";
 import MainLogo from "./mlogo.svg";
 import Chris from "./1.png";
 import Kent from "./2.png";
-import { Link } from "react-router-dom";
-// import { onAuthStateChanged } from "firebase/auth";
+import { Link, useNavigate } from "react-router-dom";
+import { auth } from "../firebase";
+import { onAuthStateChanged } from "firebase/auth";
 
 function AboutUs() {
+  const navigate = useNavigate();
+  const [user, setUser] = useState();
+  const onBack = () => {};
+
+  onAuthStateChanged(auth, (currentUser) => {
+    setUser(currentUser);
+    // if (!user) {
+    //   navigate("/login");
+    // }
+  });
   return (
     <div>
       <header className="header-about">
         <Link to="/">
-          <img src={MainLogo} className="mainLogo" alt="error" />
+          <button> x </button>
         </Link>
+        <img src={MainLogo} className="mainLogo" alt="error" />
       </header>
       <div className="container-about">
         <h1>ABOUT US</h1>

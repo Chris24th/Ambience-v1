@@ -52,6 +52,7 @@ const Pomodoro = () => {
     }
     if (distance < 0) {
       setCountDownDate();
+      beep.volume = 0.5;
       beep.play();
     }
   });

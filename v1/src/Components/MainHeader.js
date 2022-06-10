@@ -39,16 +39,3 @@ const MainHeader = () => {
 };
 
 export default MainHeader;
-
-{
-  /* <Dropdown>
-          <Dropdown.Toggle style={{ backgroundColor: "inherit" }}>
-            <AiOutlineMenu
-              className="icon-menu"
-              onClick={() => setOpen(!open)}
-            />
-          </Dropdown.Toggle>
-
-          <Dropdown.Menu>{open ? <Menu /> : ""}</Dropdown.Menu>
-        </Dropdown> */
-}

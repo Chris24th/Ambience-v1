@@ -11,11 +11,7 @@ import {
   Route,
 } from "react-router-dom";
 
-function App({
-  handleSongLoading,
-  handleSongPlaying,
-  handleSongFinishedPlaying,
-}) {
+function App({}) {
   return (
     <>
       <Router>
