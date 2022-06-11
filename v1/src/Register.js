@@ -31,7 +31,7 @@ function Register({ Login }) {
           navigate("/");
         } catch (error) {
           alert(
-            "Please input a valid email. Passwords should have at least 6 characters"
+            "Please try again; \n► Email should be valid.\n► Passwords should have at least 6 characters."
           );
         }
         return;
@@ -41,10 +41,6 @@ function Register({ Login }) {
       }
     }
   };
-
-  onAuthStateChanged(auth, (currentUser) => {
-    setUser(currentUser);
-  });
 
   return (
     <div className="login-container">

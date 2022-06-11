@@ -3,12 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { FaTimes } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import Header from "./Components/Header";
-import Tasks from "./Components/Tasks";
 import AddTask from "./Components/AddTask";
 import MainHeader from "./Components/MainHeader";
 import Pomodoro from "./Components/Pomodoro";
 import AllAudio from "./Components/AllAudio";
-import ToDo from "./Components/ToDo";
 import { db, auth } from "./firebase";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import {
@@ -47,6 +45,9 @@ function Main() {
           setTaskTime(userFS.timeArr);
           setUserID(userFS.id);
         }
+        // else {
+        //   onCreate();
+        // }
       });
     }
   });
@@ -81,9 +82,9 @@ function Main() {
   };
 
   const onCreate = async () => {
-    await setDoc(doc(userCollectionRef, userID), {
-      tasksArr: [""],
-      timeArr: [""],
+    await setDoc(doc(db, "users", user.email), {
+      tasksArr: "",
+      timeArr: "",
     });
   };
 
@@ -94,9 +95,9 @@ function Main() {
     });
   };
 
-  const addClicked = () => {
-    setShowAddTask(!showAddTask);
-  };
+  // const addClicked = () => {
+  //   setShowAddTask(!showAddTask);
+  // };
 
   return (
     <div>
@@ -111,14 +112,9 @@ function Main() {
         </div>
       </div>
       <div className="container-tasks">
-        <Header addClicked={addClicked} showAdd={showAddTask} />
-        {/* {showAddTask && (
-          <AddTask
-          // onAdd={addTask}
-          />
-        )} */}
-        {!isEmpty
-          ? "no task"
+        <Header addClicked={onAdd} />
+        {taskText == ""
+          ? "No task to show"
           : tasks.map((task) => (
               <div className="task">
                 <input type="checkbox" className="check-task" />

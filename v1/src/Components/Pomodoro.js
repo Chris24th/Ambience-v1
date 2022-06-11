@@ -24,7 +24,7 @@ const Pomodoro = () => {
 
   const onStart = () => {
     if (showWork === true) setCountDownDate(new Date().getTime() + 3301000);
-    else setCountDownDate(new Date().getTime() + 601000);
+    else setCountDownDate(new Date().getTime() + 601);
   };
   const onWork = () => {
     setShowBreak(false);
@@ -39,6 +39,7 @@ const Pomodoro = () => {
 
   useEffect(() => {
     const beep = new Audio(beeping);
+    beep.volume = 0.1;
     setNow(new Date().getTime());
     setDistance(countDownDate - now);
     setMinutes(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)));
@@ -52,7 +53,6 @@ const Pomodoro = () => {
     }
     if (distance < 0) {
       setCountDownDate();
-      beep.volume = 0.5;
       beep.play();
     }
   });
