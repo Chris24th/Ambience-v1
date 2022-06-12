@@ -9,15 +9,16 @@ import { onAuthStateChanged } from "firebase/auth";
 
 function AboutUs() {
   const navigate = useNavigate();
-  const [user, setUser] = useState();
+  const [user, setUser] = useState([]);
   const onBack = () => {};
 
   onAuthStateChanged(auth, (currentUser) => {
     setUser(currentUser);
-    // if (!user) {
-    //   navigate("/login");
-    // }
+    if (!user) {
+      navigate("/login");
+    }
   });
+
   return (
     <div>
       <header className="header-about">

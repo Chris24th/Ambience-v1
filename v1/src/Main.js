@@ -14,6 +14,7 @@ import {
   getDocs,
   addDoc,
   deleteDoc,
+  getDoc,
   doc,
   setDoc,
   updateDoc,
@@ -25,30 +26,21 @@ function Main() {
   const [showAddTask, setShowAddTask] = useState(false);
   const [user, setUser] = useState([]);
   const [users, setUsers] = useState([]);
-  const [taskText, setTaskText] = useState("");
-  const [taskTime, setTaskTime] = useState("");
+  const [taskText, setTaskText] = useState([""]);
+  const [taskTime, setTaskTime] = useState([""]);
   const [userID, setUserID] = useState("");
   const userCollectionRef = collection(db, "users");
   const navigate = useNavigate();
   const [tasks, setTasks] = useState([{ id: 0, text: "N / A", day: "0" }]);
   const [isEmpty, setIsEmpty] = useState(true);
   const [count, setCount] = useState(0);
+  const [found, setFound] = useState(false);
 
   onAuthStateChanged(auth, (currentUser) => {
     setUser(currentUser);
     if (!user) {
       navigate("/login");
     } else {
-      users.map((userFS) => {
-        if (userFS.id === user.email) {
-          setTaskText(userFS.tasksArr);
-          setTaskTime(userFS.timeArr);
-          setUserID(userFS.id);
-        }
-        // else {
-        //   onCreate();
-        // }
-      });
     }
   });
 
@@ -72,6 +64,14 @@ function Main() {
       setTasks((tasks) => [...tasks, newTask]);
       i++;
     }
+    users.map((userFS) => {
+      if (userFS.id === user.email) {
+        setTaskText(userFS.tasksArr);
+        setTaskTime(userFS.timeArr);
+        setUserID(userFS.id);
+      }
+    });
+    onCreate();
   });
 
   const onDelete = async (task, time) => {
@@ -79,13 +79,20 @@ function Main() {
       tasksArr: arrayRemove(task),
       timeArr: arrayRemove(time),
     });
+    window.location.reload(false);
   };
 
   const onCreate = async () => {
-    await setDoc(doc(db, "users", user.email), {
-      tasksArr: "",
-      timeArr: "",
-    });
+    const docRef = doc(db, "users", user.email);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+    } else {
+      await setDoc(doc(db, "users", user.email), {
+        tasksArr: [],
+        timeArr: [],
+      });
+    }
   };
 
   const onAdd = async (task, time) => {
@@ -93,17 +100,16 @@ function Main() {
       tasksArr: arrayUnion(task),
       timeArr: arrayUnion(time),
     });
+    window.location.reload(false);
   };
-
-  // const addClicked = () => {
-  //   setShowAddTask(!showAddTask);
-  // };
 
   return (
     <div>
       <MainHeader />
       <div className="arrange">
-        {userID}
+        <div className="hello">
+          <p>Hello, {userID}</p>
+        </div>
         <div className="container-pomodoro">
           <Pomodoro />
         </div>
@@ -113,7 +119,7 @@ function Main() {
       </div>
       <div className="container-tasks">
         <Header addClicked={onAdd} />
-        {taskText == ""
+        {!taskText
           ? "No task to show"
           : tasks.map((task) => (
               <div className="task">
