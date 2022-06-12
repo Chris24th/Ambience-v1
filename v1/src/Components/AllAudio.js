@@ -1,5 +1,9 @@
 import { RangeStepInput } from "react-range-step-input";
-import { AiOutlinePlayCircle } from "react-icons/ai";
+import {
+  AiOutlinePlayCircle,
+  AiOutlinePlus,
+  AiOutlineMinus,
+} from "react-icons/ai";
 // import {HiOutlineVolumeUp} from 'react-icons/hi'
 import { BiRadio } from "react-icons/bi";
 import { BsCloudRain } from "react-icons/bs";
@@ -53,7 +57,7 @@ const AllAudio = ({}) => {
   };
 
   return (
-    <div>
+    <div className="container-allAudio">
       <div className="audio-font">
         <audio ref={lofiTune} src={sLofi} loop className="player" />
         <audio ref={rainTune} src={sRain} loop className="player" />
@@ -63,7 +67,9 @@ const AllAudio = ({}) => {
         <AiOutlinePlayCircle onClick={onLofi} className="icon-play" />
         <div className="icon-align">
           <BiRadio className="icon-gen" />
+          <AiOutlineMinus className="icon-plus-minus" />
           <RangeStepInput min="0" max="100" onChange={onVolLofi} />
+          <AiOutlinePlus className="icon-plus-minus" />
         </div>
       </div>
 
@@ -72,7 +78,9 @@ const AllAudio = ({}) => {
         <br />
         <div className="icon-align">
           <BsCloudRain className="icon-gen" />
+          <AiOutlineMinus className="icon-plus-minus" />
           <RangeStepInput min="0" max="100" onChange={onVolRain} />
+          <AiOutlinePlus className="icon-plus-minus" />
         </div>
       </div>
       <div className="audio-font">
@@ -80,7 +88,9 @@ const AllAudio = ({}) => {
         <br />
         <div className="icon-align">
           <GiTreeBranch className="icon-gen" />
+          <AiOutlineMinus className="icon-plus-minus" />
           <RangeStepInput min="0" max="100" onChange={onVolForest} />
+          <AiOutlinePlus className="icon-plus-minus" />
         </div>
       </div>
       <div className="audio-font">
@@ -88,7 +98,9 @@ const AllAudio = ({}) => {
         <AiOutlinePlayCircle onClick={onFireplace} className="icon-play" />
         <div className="icon-align">
           <GiCampfire className="icon-gen" />
+          <AiOutlineMinus className="icon-plus-minus" />
           <RangeStepInput min="0" max="100" onChange={onVolFireplace} />
+          <AiOutlinePlus className="icon-plus-minus" />
         </div>
       </div>
     </div>

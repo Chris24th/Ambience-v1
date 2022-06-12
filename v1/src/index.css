@@ -49,12 +49,10 @@ body {
 }
 .container-allAudio {
   display: block;
-  width: 70%;
   margin: 20px;
   height: auto;
-  padding: 30px;
+  padding: 10px;
   border-radius: 10px;
-  margin-left: 15%;
 }
 .container-tasks {
   display: inline-block;
@@ -288,10 +286,6 @@ body {
   border: none;
   border-radius: 50%;
 }
-.icon-play:hover {
-  background-color: #c0baac;
-  transition: 0.3s;
-}
 .icon-play:active {
   transform: scale(0.95);
 }
@@ -304,7 +298,14 @@ body {
   vertical-align: middle;
   width: 30px;
   height: 30px;
-  margin-right: 5px;
+  margin-right: 15px;
+}
+.icon-plus-minus {
+  display: inline-block;
+  vertical-align: middle;
+  width: 18px;
+  height: 18px;
+  margin: 10px;
 }
 .icon-task {
   display: inline-block;
@@ -353,7 +354,7 @@ body {
   align-items: center;
   margin-bottom: 20px;
   font-family: inherit;
-  background-color: #a89a92;
+  background-color: inherit;
 }
 .header-task h1 {
   background-color: inherit;
@@ -480,6 +481,7 @@ body {
   transition: 0.3s;
   outline: none;
   border-bottom: 1px solid #806b6b;
+  background-color: inherit;
 }
 .input-style:focus {
   border-bottom: 4px solid #624b4b;
@@ -491,24 +493,42 @@ body {
 .task {
   display: block;
   margin: 5px;
+  margin-bottom: 10px;
   padding: 10px 20px;
   background: #ffffff;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 20px;
 }
-.check-task {
-  display: inline-block;
-  background-color: #806b6b;
-  width: 30px;
-  height: 30px;
-  vertical-align: middle;
+
+input[type="checkbox"] {
+  appearance: none;
   margin: 5px;
   margin-right: 20px;
-  cursor: pointer;
-  border: none;
+  width: 35px;
+  height: 35px;
+  transform: translateY(-0.075em);
+
+  display: inline-block;
+  vertical-align: middle;
+  place-content: center;
+  content: url("./images/pin.png");
 }
-.check-task:checked {
-  accent-color: #624b4b;
+.form-control + .form-control {
+  margin-top: 1em;
+}
+input[type="checkbox"]::before {
+  display: inline-block;
+  margin: 5px;
+  width: 30px;
+  height: 30px;
+  /* transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em var(--form-control-color); */
+}
+input[type="checkbox"]:checked {
+  /* transform: scale(1);
+  transform-origin: bottom left; */
+  content: url("./images/check.png");
 }
 
 .task.reminder {
@@ -535,7 +555,7 @@ body {
   width: 20px;
   height: 20px;
   transform: scale(0.95);
-  transition: width 0.2s, height 0.2s, transform 0.5s;
+  transition: width 0.1s, height 0.1s, transform 0.2s;
 }
 .x-btn:hover {
   width: 25px;
@@ -550,14 +570,17 @@ body {
 .add-form {
   margin-bottom: 40px;
   width: 100%;
+  background-color: #a89a92;
 }
 
 .form-control {
   margin: 20px 0;
+  background-color: inherit;
 }
 
 .form-control label {
   display: block;
+  background-color: inherit;
 }
 
 .form-control input {
@@ -592,8 +615,9 @@ body {
 input[type="range"] {
   height: 10px;
   -webkit-appearance: none;
-  width: 80%;
-  margin-left: 10px;
+  width: 65%;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 input[type="range"]:focus {
   outline: none;
@@ -612,6 +636,7 @@ input[type="range"]::-webkit-slider-thumb {
   height: 17px;
   width: 17px;
   border-radius: 25px;
+  border: #d0cabb solid 2px;
   background: #806b6b;
   cursor: pointer;
   -webkit-appearance: none;

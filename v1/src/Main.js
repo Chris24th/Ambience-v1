@@ -116,7 +116,7 @@ function Main() {
         <div>
           <Pomodoro />
         </div>
-        <div className="container-allAudio">
+        <div>
           <AllAudio />
         </div>
       </div>
@@ -126,7 +126,7 @@ function Main() {
           ? "No task to show"
           : tasks.map((task) => (
               <div className="task">
-                <input type="checkbox" className="check-task" />
+                <input type="checkbox" />
                 <div className="task-info">
                   <h3>{task.text}</h3>
                   <FaTimes
