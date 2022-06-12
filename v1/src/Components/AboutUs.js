@@ -5,13 +5,16 @@ import Chris from "./1.png";
 import Kent from "./2.png";
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../firebase";
-import { onAuthStateChanged } from "firebase/auth";
+import { onAuthStateChanged, signOut } from "firebase/auth";
+import { IoChevronBackSharp } from "react-icons/io5";
 
 function AboutUs() {
   const navigate = useNavigate();
   const [user, setUser] = useState([]);
-  const onBack = () => {};
 
+  const logout = async () => {
+    await signOut(auth);
+  };
   onAuthStateChanged(auth, (currentUser) => {
     setUser(currentUser);
     if (!user) {
@@ -22,10 +25,23 @@ function AboutUs() {
   return (
     <div>
       <header className="header-about">
-        <Link to="/">
-          <button> x </button>
+        <Link
+          to="/"
+          style={{
+            textDecoration: "none",
+          }}
+        >
+          <button className="backBtn">
+            <IoChevronBackSharp className="icon-back" />
+            <p> Back </p>
+          </button>
         </Link>
         <img src={MainLogo} className="mainLogo" alt="error" />
+        <label>
+          <Link onClick={logout} to="/login" style={{ textDecoration: "none" }}>
+            Sign out
+          </Link>
+        </label>
       </header>
       <div className="container-about">
         <h1>ABOUT US</h1>

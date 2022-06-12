@@ -22,7 +22,7 @@ const Header = ({ addClicked, showAdd }) => {
 
   return (
     <div>
-      <header className="header">
+      <header className="header-task">
         <h1>
           <BiNotepad className="icon-task" /> To Do List
         </h1>

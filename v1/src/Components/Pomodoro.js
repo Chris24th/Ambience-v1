@@ -59,11 +59,12 @@ const Pomodoro = () => {
 
   return (
     <div>
-      <header>
+      <header className="container-pomodoro">
         <div className="header-pomodoro">
           <label onClick={onWork} className="work-break">
             Work
           </label>
+          <div className="work-break-div"></div>
           <label onClick={onBreak} className="work-break">
             Break
           </label>

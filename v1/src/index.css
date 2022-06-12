@@ -27,12 +27,12 @@ body {
 }
 .container-header {
   display: flex;
-  /* background-color: rgba(217, 213, 201); */
-  position: fixed;
+  margin-top: 20px;
   width: 100%;
-  height: 100px;
-  padding: 40px;
-  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.25);
+  height: 90px;
+  padding-left: 4%;
+  padding-right: 4%;
+  /* box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.25); */
 }
 .container-pomodoro {
   display: block;
@@ -40,10 +40,12 @@ body {
   margin: 20px;
   margin-top: 30px;
   height: auto;
-  padding-bottom: 20px;
-  padding-top: 10px;
+  padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  background: #a89a92;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+  border-radius: 40px;
+  /* box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); */
 }
 .container-allAudio {
   display: block;
@@ -56,15 +58,15 @@ body {
 }
 .container-tasks {
   display: inline-block;
-  min-width: 60%;
+  min-width: 50%;
   margin: 20px;
-  margin-top: 140px;
+  margin-top: 104px;
   height: 90%;
   padding: 30px;
-  border-radius: 10px;
-  /* background-color: #806B6B; */
   vertical-align: top;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  background: #a89a92;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+  border-radius: 40px;
 }
 .login-container {
   display: flex;
@@ -91,10 +93,13 @@ body {
 }
 .header-about {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  margin-top: 20px;
   width: 100%;
-  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.25);
+  height: 90px;
+  padding-left: 4%;
+  padding-right: 4%;
+  justify-content: space-between;
+  align-items: center;
 }
 .register-box {
   display: flex;
@@ -260,9 +265,9 @@ body {
 }
 
 .mainLogo {
-  height: 90px;
-  width: 140px;
-  /* background-color: rgba(217, 213, 201); */
+  width: 200px;
+  height: 60px;
+  overflow: hidden;
   object-fit: cover;
 }
 .icon-menu {
@@ -306,9 +311,18 @@ body {
   vertical-align: middle;
   width: 40px;
   height: 40px;
+  background-color: inherit;
+}
+.icon-back {
+  display: inline-block;
+  vertical-align: middle;
+  width: 30px;
+  height: 30px;
+  background-color: inherit;
 }
 .arrange {
-  margin-top: 120px;
+  margin-top: 20px;
+  margin-left: 3%;
   display: inline-block;
   width: 500px;
 }
@@ -326,13 +340,23 @@ body {
   margin: 15px;
   font-family: inherit;
 }
-
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
   font-family: inherit;
+}
+.header-task {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  font-family: inherit;
+  background-color: #a89a92;
+}
+.header-task h1 {
+  background-color: inherit;
 }
 .about-logout {
   display: flex;
@@ -341,26 +365,57 @@ body {
 }
 .header-pomodoro {
   display: flex;
-  /* text-align: center; */
+  background-color: inherit;
   justify-content: space-between;
 }
 .work-break {
-  width: 50%;
+  background-color: inherit;
+  width: 49%;
   text-align: center;
   font-size: 25px;
   cursor: pointer;
 }
 .work-break:hover {
-  background-color: #806b6b;
+  border-bottom: solid 3px #fff;
   color: #fff;
-  transition: 0.5s;
+  /* transition: 0.5s; */
+}
+.work-break:active {
+  transform: scale(0.98);
+}
+.work-break-div {
+  background-color: inherit;
+  border-left: solid 1px #624b4b;
 }
 .timer {
+  background-color: inherit;
+  font-weight: 500;
   display: block;
   text-align: center;
   width: 100%;
-  font-size: 70px;
+  font-size: 90px;
   padding: 30px;
+}
+.backBtn {
+  font-family: inherit;
+  display: flex;
+  border: none;
+  padding: 3px 20px;
+  margin: auto;
+  border-radius: 5px;
+  cursor: pointer;
+  align-items: center;
+}
+.backBtn p {
+  display: flex;
+  background-color: inherit;
+}
+.backBtn:hover {
+  transform: scale(0.95);
+  transition: 0.4s;
+}
+.backBtn:active {
+  transform: scale(0.95);
 }
 .startBtn {
   font-size: 20px;
@@ -371,12 +426,14 @@ body {
   margin: auto;
   border-radius: 5px;
   cursor: pointer;
-  background-color: #806b6b;
-  color: #fff;
+  background: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
 }
 .startBtn:hover {
   background-color: #624b4b;
-  transition: 0.4s;
+  color: #fff;
+  transition: 0.3s;
 }
 .startBtn:active {
   transform: scale(0.95);
@@ -427,19 +484,17 @@ body {
 .input-style:focus {
   border-bottom: 4px solid #624b4b;
 }
-
-/* .container-list{
-  width: 80%;
-} */
 .separate-task {
   display: block;
 }
 
 .task {
   display: block;
-  /* background-color: rgba(217, 213, 201); */
   margin: 5px;
   padding: 10px 20px;
+  background: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
 }
 .check-task {
   display: inline-block;

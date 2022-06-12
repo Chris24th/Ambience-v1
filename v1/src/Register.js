@@ -63,6 +63,9 @@ function Register({ Login }) {
               value={newPassword}
               onChange={(e) => setNewPassword(e.target.value)}
             />
+            <p style={{ color: "#907878" }}>
+              Password must be at least 6 characters.
+            </p>
           </div>
           <div className="form-control">
             <label>Confirm Password</label>

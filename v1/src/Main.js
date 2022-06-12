@@ -24,23 +24,30 @@ import {
 
 function Main() {
   const [showAddTask, setShowAddTask] = useState(false);
-  const [user, setUser] = useState([]);
   const [users, setUsers] = useState([]);
   const [taskText, setTaskText] = useState([""]);
   const [taskTime, setTaskTime] = useState([""]);
   const [userID, setUserID] = useState("");
   const userCollectionRef = collection(db, "users");
+  const auth = getAuth();
   const navigate = useNavigate();
   const [tasks, setTasks] = useState([{ id: 0, text: "N / A", day: "0" }]);
   const [isEmpty, setIsEmpty] = useState(true);
   const [count, setCount] = useState(0);
   const [found, setFound] = useState(false);
+  const [userEmail, setUserEmail] = useState();
 
   onAuthStateChanged(auth, (currentUser) => {
-    setUser(currentUser);
-    if (!user) {
+    if (!currentUser) {
       navigate("/login");
     } else {
+      users.map((userFS) => {
+        if (userFS.id === currentUser.email) {
+          setTaskText(userFS.tasksArr);
+          setTaskTime(userFS.timeArr);
+          setUserEmail(currentUser.email);
+        }
+      });
     }
   });
 
@@ -53,6 +60,7 @@ function Main() {
   }, []);
 
   useEffect(() => {
+    onCreate();
     let i = 1;
     setCount(taskText.length);
     setTasks([{ text: taskText[0], day: taskTime[0] }]);
@@ -64,18 +72,10 @@ function Main() {
       setTasks((tasks) => [...tasks, newTask]);
       i++;
     }
-    users.map((userFS) => {
-      if (userFS.id === user.email) {
-        setTaskText(userFS.tasksArr);
-        setTaskTime(userFS.timeArr);
-        setUserID(userFS.id);
-      }
-    });
-    onCreate();
   });
 
   const onDelete = async (task, time) => {
-    await updateDoc(doc(userCollectionRef, userID), {
+    await updateDoc(doc(userCollectionRef, userEmail), {
       tasksArr: arrayRemove(task),
       timeArr: arrayRemove(time),
     });
@@ -83,20 +83,23 @@ function Main() {
   };
 
   const onCreate = async () => {
-    const docRef = doc(db, "users", user.email);
-    const docSnap = await getDoc(docRef);
-
-    if (docSnap.exists()) {
-    } else {
-      await setDoc(doc(db, "users", user.email), {
-        tasksArr: [],
-        timeArr: [],
-      });
-    }
+    setUserEmail(auth.currentUser.email);
+    const docRef = doc(db, "users", userEmail);
+    const docSnap = getDoc(docRef);
+    // const newEmail = auth.currentUser.email;
+    getDoc(doc(db, "users", userEmail)).then((docSnap) => {
+      if (docSnap.exists()) {
+      } else {
+        setDoc(doc(userCollectionRef, userEmail), {
+          tasksArr: [],
+          timeArr: [],
+        });
+      }
+    });
   };
 
   const onAdd = async (task, time) => {
-    await updateDoc(doc(userCollectionRef, userID), {
+    await updateDoc(doc(userCollectionRef, userEmail), {
       tasksArr: arrayUnion(task),
       timeArr: arrayUnion(time),
     });
@@ -108,9 +111,9 @@ function Main() {
       <MainHeader />
       <div className="arrange">
         <div className="hello">
-          <p>Hello, {userID}</p>
+          <p>Hello, {userEmail}</p>
         </div>
-        <div className="container-pomodoro">
+        <div>
           <Pomodoro />
         </div>
         <div className="container-allAudio">
