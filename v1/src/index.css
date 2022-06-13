@@ -55,7 +55,9 @@ body {
 }
 .container-tasks {
   display: inline-block;
-  min-width: 50%;
+  margin-left: 5%;
+  margin-bottom: 5%;
+  min-width: 48%;
   height: 90%;
   padding: 30px;
   vertical-align: top;
@@ -113,7 +115,6 @@ body {
   margin-top: 40px;
   padding-right: 150px;
   border-right: solid 2px #806b6b;
-  margin-bottom: 5%;
 }
 .container-footer {
   display: flex;
@@ -352,7 +353,6 @@ body {
   margin-left: 3%;
   display: inline-block;
   width: 500px;
-  margin-right: 50px;
 }
 
 .label {
@@ -569,6 +569,7 @@ input[type="checkbox"]:checked {
 }
 .task h3 {
   background-color: inherit;
+  overflow: auto;
   vertical-align: top;
 }
 .x-btn {

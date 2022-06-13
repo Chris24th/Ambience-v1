@@ -126,21 +126,32 @@ function Main() {
           </div>
           <div className="container-tasks">
             <Tasks addClicked={onAdd} />
-            {!taskText
-              ? "No task to show"
-              : tasks.map((task) => (
-                  <div className="task">
-                    <input type="checkbox" />
-                    <div className="task-info">
-                      <h3>{task.text}</h3>
-                      <FaTimes
-                        className="x-btn"
-                        onClick={() => onDelete(task.text, task.day)}
-                      />
-                    </div>
-                    <p>{task.day}</p>
+            {taskText == "" ? (
+              <div
+                style={{
+                  fontSize: "20px",
+                  fontWeight: "300",
+                  color: "white",
+                  background: "inherit",
+                }}
+              >
+                No task to show
+              </div>
+            ) : (
+              tasks.map((task) => (
+                <div className="task">
+                  <input type="checkbox" />
+                  <div className="task-info">
+                    <h3>{task.text}</h3>
+                    <FaTimes
+                      className="x-btn"
+                      onClick={() => onDelete(task.text, task.day)}
+                    />
                   </div>
-                ))}
+                  <p>{task.day}</p>
+                </div>
+              ))
+            )}
           </div>
         </div>
       ) : (
