@@ -1,9 +1,7 @@
 // import AboutUs from './AboutUs'
-import MainLogo from "./mlogo.svg";
-import Menu from "./Menu";
+import MainLogo from "../images/mlogo.svg";
 import { AiOutlineMenu } from "react-icons/ai";
 import { useState } from "react";
-import Dropdown from "react-bootstrap/Dropdown";
 import { Link } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase";
@@ -18,16 +16,17 @@ const MainHeader = () => {
       <header className="header container-header">
         <img src={MainLogo} className="mainLogo" alt="error" />
         <div className="about-logout">
-          <label>
+          <label className="nav">
             <Link to="/about" style={{ textDecoration: "none" }}>
               About Us
             </Link>
           </label>
-          <label>
+          <label className="nav">
             <Link
               onClick={logout}
               to="/login"
               style={{ textDecoration: "none" }}
+              className="nav"
             >
               Sign out
             </Link>

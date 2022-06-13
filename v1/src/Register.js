@@ -1,4 +1,4 @@
-import MainLogo from "./Components/mlogo.svg";
+import MainLogo from "./images/mlogo.svg";
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
@@ -45,7 +45,7 @@ function Register({ Login }) {
   return (
     <div className="login-container">
       <div className="register-box">
-        <form className="add-form" onSubmit={onSubmit}>
+        <form className="add-form-login" onSubmit={onSubmit}>
           <div className="form-control">
             <label>Email</label>
             <input

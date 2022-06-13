@@ -62,11 +62,11 @@ const Pomodoro = () => {
       <header className="container-pomodoro">
         <div className="header-pomodoro">
           <label onClick={onWork} className="work-break">
-            Work
+            {showWork ? <div className="active">Work</div> : "Work"}
           </label>
           <div className="work-break-div"></div>
           <label onClick={onBreak} className="work-break">
-            Break
+            {showBreak ? <div className="active">Break</div> : "Break"}
           </label>
         </div>
         <label className="timer">

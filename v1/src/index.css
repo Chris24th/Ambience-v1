@@ -14,7 +14,7 @@ body {
   width: 95%;
   height: 44px;
   background: #806b6b;
-  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5);
   border-radius: 10px;
   margin: 10px;
   display: flex;
@@ -32,20 +32,19 @@ body {
   height: 90px;
   padding-left: 4%;
   padding-right: 4%;
-  /* box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.25); */
 }
 .container-pomodoro {
   display: block;
   width: 90%;
   margin: 20px;
-  margin-top: 30px;
+  margin-top: 50px;
+  margin-bottom: 50px;
   height: auto;
   padding: 20px;
   border-radius: 10px;
   background: #a89a92;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
   border-radius: 40px;
-  /* box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); */
 }
 .container-allAudio {
   display: block;
@@ -57,14 +56,20 @@ body {
 .container-tasks {
   display: inline-block;
   min-width: 50%;
-  margin: 20px;
-  margin-top: 104px;
   height: 90%;
   padding: 30px;
   vertical-align: top;
   background: #a89a92;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
   border-radius: 40px;
+}
+.loading {
+  display: flex;
+  flex-direction: column;
+  margin-top: 100px;
+  margin-bottom: 200px;
+  justify-content: center;
+  align-items: center;
 }
 .login-container {
   display: flex;
@@ -138,17 +143,20 @@ body {
   width: 70%;
   height: 80%;
   margin-top: 70px;
-  background-color: rgb(168, 155, 147);
+  background-color: #806b6b;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
   border-radius: 40px;
 }
 .container-about h1 {
   background-color: inherit;
+  color: #fff;
   font-size: 45px;
 }
 .container-about p {
   color: #fff;
+  font-weight: 300;
   background-color: inherit;
+  text-align: justify;
 }
 .container-contact {
   display: flex;
@@ -166,7 +174,7 @@ body {
 .container-team {
   width: 70%;
   height: 100px auto;
-  background: #e5e5e5;
+  background: #806b6b;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
   border-radius: 40px;
   display: flex;
@@ -205,12 +213,17 @@ body {
 }
 .chris h3 {
   background-color: inherit;
+  color: #fff;
+}
+.chris p {
+  color: #fff;
+  font-weight: 300;
 }
 .name-divider {
   height: 350px;
   width: 1%;
   border: none;
-  border-right: solid 1px #806b6b;
+  border-right: solid 1px #624b4b;
   background-color: inherit;
 }
 .kent {
@@ -227,6 +240,11 @@ body {
 }
 .kent h3 {
   background-color: inherit;
+  color: #fff;
+}
+.kent p {
+  color: #fff;
+  font-weight: 300;
 }
 .audio-font {
   display: block;
@@ -268,13 +286,21 @@ body {
   overflow: hidden;
   object-fit: cover;
 }
+.nav {
+  font-size: 18px;
+}
+.nav:hover {
+  transform: scale(1.03);
+  transition: 0.1s;
+}
+.nav:active {
+  transform: scale(0.95);
+}
 .icon-menu {
   display: inline-block;
   vertical-align: middle;
   width: 30px;
   height: 30px;
-  /* background-color: inherit; */
-  /* color: inherit; */
 }
 .icon-play {
   display: inline-block;
@@ -326,13 +352,8 @@ body {
   margin-left: 3%;
   display: inline-block;
   width: 500px;
+  margin-right: 50px;
 }
-/* .background-green{
-  background-color: #87C267;
-}
-.background-blueGreen{
-  background-color: #00CC99;
-} */
 
 .label {
   font-size: 17px;
@@ -367,26 +388,31 @@ body {
 .header-pomodoro {
   display: flex;
   background-color: inherit;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 .work-break {
+  display: flex;
+  justify-content: center;
   background-color: inherit;
-  width: 49%;
-  text-align: center;
-  font-size: 25px;
+  width: 35%;
+  font-size: 30px;
   cursor: pointer;
 }
 .work-break:hover {
-  border-bottom: solid 3px #fff;
   color: #fff;
-  /* transition: 0.5s; */
+  transition: 0.1s;
 }
 .work-break:active {
-  transform: scale(0.98);
+  transform: scale(0.95);
 }
 .work-break-div {
   background-color: inherit;
-  border-left: solid 1px #624b4b;
+  border-left: solid 1px #806b6b;
+}
+.active {
+  font-size: 32px;
+  background-color: inherit;
+  border-bottom: solid 3px #fff;
 }
 .timer {
   background-color: inherit;
@@ -399,6 +425,7 @@ body {
 }
 .backBtn {
   font-family: inherit;
+  font-size: 18px;
   display: flex;
   border: none;
   padding: 3px 20px;
@@ -412,8 +439,8 @@ body {
   background-color: inherit;
 }
 .backBtn:hover {
-  transform: scale(0.95);
-  transition: 0.4s;
+  transform: scale(1.03);
+  transition: 0.1s;
 }
 .backBtn:active {
   transform: scale(0.95);
@@ -425,9 +452,9 @@ body {
   border: none;
   padding: 3px 20px;
   margin: auto;
-  border-radius: 5px;
   cursor: pointer;
-  background: #ffffff;
+  background: #806b6b;
+  color: #fff;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
 }
@@ -445,24 +472,22 @@ body {
   background: #806b6b;
   color: #fff;
   border: none;
-  padding: 3px 20px;
-  border-radius: 5px;
+  padding: 8px 20px;
+  border-radius: 10px;
   cursor: pointer;
   text-decoration: none;
-  font-size: 15px;
+  font-size: 17px;
   font-family: inherit;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
 }
 .btn:hover {
   background: #624b4b;
   transition: 0.5s;
 }
-.btn:focus {
-  outline: none;
-}
 .btn:active {
   transform: scale(0.97);
 }
-
 .btn-block {
   display: block;
   width: 100%;
@@ -478,10 +503,15 @@ body {
 .input-style {
   box-sizing: border-box;
   border: none;
-  transition: 0.3s;
+  transition: 0.1s;
   outline: none;
   border-bottom: 1px solid #806b6b;
   background-color: inherit;
+  font-family: inherit;
+}
+.input-style::placeholder {
+  color: #806b6b;
+  font-weight: 300;
 }
 .input-style:focus {
   border-bottom: 4px solid #624b4b;
@@ -493,7 +523,7 @@ body {
 .task {
   display: block;
   margin: 5px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   padding: 10px 20px;
   background: #ffffff;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -506,28 +536,21 @@ input[type="checkbox"] {
   margin-right: 20px;
   width: 35px;
   height: 35px;
-  transform: translateY(-0.075em);
+  transition: 0.1s;
 
   display: inline-block;
   vertical-align: middle;
   place-content: center;
   content: url("./images/pin.png");
 }
+input[type="checkbox"]:hover {
+  width: 38px;
+  height: 38px;
+}
 .form-control + .form-control {
   margin-top: 1em;
 }
-input[type="checkbox"]::before {
-  display: inline-block;
-  margin: 5px;
-  width: 30px;
-  height: 30px;
-  /* transform: scale(0);
-  transition: 120ms transform ease-in-out;
-  box-shadow: inset 1em 1em var(--form-control-color); */
-}
 input[type="checkbox"]:checked {
-  /* transform: scale(1);
-  transform-origin: bottom left; */
   content: url("./images/check.png");
 }
 
@@ -572,7 +595,11 @@ input[type="checkbox"]:checked {
   width: 100%;
   background-color: #a89a92;
 }
-
+.add-form-login {
+  margin-bottom: 40px;
+  width: 100%;
+  background-color: inherit;
+}
 .form-control {
   margin: 20px 0;
   background-color: inherit;
@@ -606,11 +633,6 @@ input[type="checkbox"]:checked {
   height: 20px;
   accent-color: #624b4b;
 }
-
-/* footer {
-  margin-top: 30px;
-  text-align: center;
-} */
 
 input[type="range"] {
   height: 10px;
@@ -649,28 +671,6 @@ input[type="range"]::-webkit-slider-thumb:hover {
   background: #624b4b;
   transition: 0.4s;
 }
-/* input[type=range]:focus::-webkit-slider-runnable-track {
-  height: 5px;
-} */
-/* input[type=range]::-moz-range-track {
-  width: 100%;
-  height: 5px;
-  cursor: pointer;
-  animate: 0.2s;
-  box-shadow: 0px 0px 0px #000000;
-  background: #2497E3;
-  border-radius: 1px;
-  border: 0px solid #000000;
-} */
-/* input[type=range]::-moz-range-thumb {
-  box-shadow: 0px 0px 0px #000000;
-  border: 1px solid #2497E3;
-  height: 18px;
-  width: 18px;
-  border-radius: 25px;
-  background: #A1D0FF;
-  cursor: pointer;
-} */
 input[type="range"]::-ms-track {
   width: 100%;
   height: 5px;
@@ -680,31 +680,3 @@ input[type="range"]::-ms-track {
   border-color: transparent;
   color: transparent;
 }
-/* input[type=range]::-ms-fill-lower {
-  background: #2497E3;
-  border: 0px solid #000000;
-  border-radius: 2px;
-  box-shadow: 0px 0px 0px #000000;
-}
-input[type=range]::-ms-fill-upper {
-  background: #2497E3;
-  border: 0px solid #000000;
-  border-radius: 2px;
-  box-shadow: 0px 0px 0px #000000;
-} */
-/* input[type=range]::-ms-thumb {
-  margin-top: 1px;
-  box-shadow: 0px 0px 0px #000000;
-  border: 1px solid #2497E3;
-  height: 18px;
-  width: 18px;
-  border-radius: 25px;
-  background: #A1D0FF;
-  cursor: pointer;
-} */
-/* input[type=range]:focus::-ms-fill-lower {
-  background: #2497E3;
-}
-input[type=range]:focus::-ms-fill-upper {
-  background: #2497E3;
-} */

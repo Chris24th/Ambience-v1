@@ -2,11 +2,11 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { FaTimes } from "react-icons/fa";
 import { useState, useEffect } from "react";
-import Header from "./Components/Header";
-import AddTask from "./Components/AddTask";
+import Tasks from "./Components/Tasks";
 import MainHeader from "./Components/MainHeader";
 import Pomodoro from "./Components/Pomodoro";
 import AllAudio from "./Components/AllAudio";
+import Loading from "./Components/Loading";
 import { db, auth } from "./firebase";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import {
@@ -23,6 +23,7 @@ import {
 } from "firebase/firestore";
 
 function Main() {
+  const [loading, setLoading] = useState(true);
   const [showAddTask, setShowAddTask] = useState(false);
   const [users, setUsers] = useState([]);
   const [taskText, setTaskText] = useState([""]);
@@ -57,6 +58,7 @@ function Main() {
       setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     };
     getUsers();
+    setTimeout(() => setLoading(false), 500);
   }, []);
 
   useEffect(() => {
@@ -107,38 +109,44 @@ function Main() {
   };
 
   return (
-    <div>
-      <MainHeader />
-      <div className="arrange">
-        <div className="hello">
-          <p>Hello, {userEmail}</p>
-        </div>
+    <>
+      {loading === false ? (
         <div>
-          <Pomodoro />
+          <MainHeader />
+          <div className="arrange">
+            <div className="hello">
+              <p>Hello, {userEmail}</p>
+            </div>
+            <div>
+              <Pomodoro />
+            </div>
+            <div>
+              <AllAudio />
+            </div>
+          </div>
+          <div className="container-tasks">
+            <Tasks addClicked={onAdd} />
+            {!taskText
+              ? "No task to show"
+              : tasks.map((task) => (
+                  <div className="task">
+                    <input type="checkbox" />
+                    <div className="task-info">
+                      <h3>{task.text}</h3>
+                      <FaTimes
+                        className="x-btn"
+                        onClick={() => onDelete(task.text, task.day)}
+                      />
+                    </div>
+                    <p>{task.day}</p>
+                  </div>
+                ))}
+          </div>
         </div>
-        <div>
-          <AllAudio />
-        </div>
-      </div>
-      <div className="container-tasks">
-        <Header addClicked={onAdd} />
-        {!taskText
-          ? "No task to show"
-          : tasks.map((task) => (
-              <div className="task">
-                <input type="checkbox" />
-                <div className="task-info">
-                  <h3>{task.text}</h3>
-                  <FaTimes
-                    className="x-btn"
-                    onClick={() => onDelete(task.text, task.day)}
-                  />
-                </div>
-                <p>{task.day}</p>
-              </div>
-            ))}
-      </div>
-    </div>
+      ) : (
+        <Loading />
+      )}
+    </>
   );
 }
 

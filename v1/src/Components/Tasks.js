@@ -1,12 +1,10 @@
 import { BiNotepad } from "react-icons/bi";
 import { useState } from "react";
-import AddTask from "./AddTask";
 
-const Header = ({ addClicked, showAdd }) => {
+const Tasks = ({ addClicked, showAdd }) => {
   const [showAddTask, setShowAddTask] = useState(false);
   const [text, setText] = useState("");
   const [day, setDay] = useState("");
-  const [reminder, setReminder] = useState(false);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -17,7 +15,6 @@ const Header = ({ addClicked, showAdd }) => {
     addClicked(text, day);
     setText("");
     setDay("");
-    // setReminder(false)
   };
 
   return (
@@ -64,4 +61,4 @@ const Header = ({ addClicked, showAdd }) => {
   );
 };
 
-export default Header;
+export default Tasks;

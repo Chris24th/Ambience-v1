@@ -63,7 +63,7 @@ const AllAudio = ({}) => {
         <audio ref={rainTune} src={sRain} loop className="player" />
         <audio ref={forestTune} src={sForest} loop className="player" />
         <audio ref={fireplaceTune} src={sFireplace} loop className="player" />
-        LoFi Radio
+        LoFi Radio{" "}
         <AiOutlinePlayCircle onClick={onLofi} className="icon-play" />
         <div className="icon-align">
           <BiRadio className="icon-gen" />
